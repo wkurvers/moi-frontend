@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import { Modal, Button, Input } from 'antd';
+import {Modal, Button, Input, Typography, Divider} from 'antd';
 import "./Home.css"
+
+const { Title } = Typography;
+
 
 class Home extends Component {
 
@@ -11,7 +14,9 @@ class Home extends Component {
     this.state = {
       visible: false,
       showLogin: false,
-      showRegistration: false
+      showBeginScreen: true,
+      showPasswordForgot: false,
+      showPasswordChange: false
     }
   }
 
@@ -33,86 +38,127 @@ class Home extends Component {
     });
   };
 
-
-  handleOk = e => {
-    console.log(e);
+  switchLoginView() {
     this.setState({
-      visible: false,
-    });
-  };
-
-  callback(key) {
-    console.log(key);
+      showLogin: true,
+      showBeginScreen: false,
+      showPasswordForgot: true
+    })
   }
 
-  showComponent(component) {
+  switchComponent(component) {
     switch(component) {
-      case "login":
-        this.setState({
-          showLogin: true,
-          showRegistration: false
-        });
-        break;
-
-      case "registration":
+      case "BeginScreen":
         this.setState({
           showLogin: false,
-          showRegistration: true
+          showBeginScreen: true,
+          showPasswordForgot: false,
+          showPasswordChange: false
+        });
+        break;
+      case "Login":
+        this.setState({
+          showLogin: true,
+          showBeginScreen: false,
+          showPasswordForgot: false,
+          showPasswordChange: false
+        });
+        break;
+      case "PasswordForgot":
+        this.setState({
+          showLogin: false,
+          showBeginScreen: false,
+          showPasswordForgot: true,
+          showPasswordChange: false
+        });
+      break;
+      case "PasswordChange":
+        this.setState({
+          showLogin: false,
+          showBeginScreen: false,
+          showPasswordForgot: false,
+          showPasswordChange: true
         });
       break;
     }
   }
 
+  _renderBeginScreen() {
+    return (
+        <div>
+          <div className={"form-container"}>
+            <Title className={"label"} level={4}>E-mailadres</Title>
+            <Input className={"input"} placeholder="Vul je e-mailadres in" />
+            <Title className={"label"} level={4}>Wachtwoord</Title>
+            <Input className={"input"} placeholder="Vul je wachtwoord in" />
+            <Title className={"label"} level={4}>Herhaal wachtwoord</Title>
+            <Input className={"input"} placeholder="Vul nog een keer je wachtwoord in" />
+          </div>
+
+          <div className={"button-container"}>
+            <div className={"custom-button"} onClick={() => this.registrate()}>
+              Registreren
+            </div>
+          </div>
+
+          <Divider className={"divider"}>Heb je al een account?</Divider>
+
+          <div className={"button-container"}>
+            <div className={"custom-button"} onClick={() => this.switchComponent("Login")}>
+              Inloggen
+            </div>
+          </div>
+        </div>
+    )
+  }
+
   _renderLogin() {
+    return (
+        <div>
+          <div className={"form-container"}>
+            <Title className={"label"} level={4}>E-mailadres</Title>
+            <Input className={"input"} placeholder="Vul je e-mailadres in" />
+            <Title className={"label"} level={4}>Wachtwoord</Title>
+            <Input className={"input"} placeholder="Vul je wachtwoord in" />
+          </div>
+          <div className={"button-container"}>
+            <div className={"custom-button"} onClick={() => this.switchComponent("Login")}>
+              Inloggen
+            </div>
+          </div>
+
+        </div>
+    )
+  }
+
+  _renderPasswordForgot() {
     return (
         <div>
           <h1>E-mailadres</h1>
           <Input placeholder="Vul hier je e-mailadres in" />
-          <h1>Wachtwoord</h1>
-          <Input placeholder="Basic usage" />
         </div>
     )
   }
 
-  _renderRegister() {
+  _renderPasswordChange() {
     return (
         <div>
-          <h1>Gebruikersnaam</h1>
-          <Input placeholder="Basic usage" />
-          <h1>Wachtwoord</h1>
-          <Input placeholder="Basic usage" />
+          <Title className={"label"} level={4}>Verificatiecode</Title>
+          <Input className={"input"} placeholder="Vul je ontvangen verificatiecode in" />
+          <Title className={"label"} level={4}>Wachtwoord</Title>
+          <Input className={"input"} placeholder="Vul je wachtwoord in" />
+          <Title className={"label"} level={4}>Herhaal wachtwoord</Title>
+          <Input className={"input"} placeholder="Vul nog een keer je wachtwoord in" />
+
+          <div className={"button-container"}>
+            <div className={"custom-button"} onClick={() => alert("yo")}>
+              Verander uw wachtwoord
+            </div>
+          </div>
         </div>
     )
   }
 
-
-  _renderModal() {
-    return (
-        <div>
-          <Button
-              type="primary"
-              ghost
-              style={{width: "40%", marginRight: "2%"}}
-              onClick={() => this.showComponent("login")}>
-            Inloggen
-          </Button>
-          <Button
-              type="primary"
-              style={{width: "40%"}}
-              onClick={() =>  this.showComponent("registration")}>
-            Registreren
-          </Button>
-        </div>
-    )
-  }
-
-  _renderModalHeader() {
-    return (
-        <div style={{width: "100%"}}>
-          <h1 style={{}}>Moi eem</h1>
-        </div>
-    )
-  }
 
   render() {
     return (
@@ -122,14 +168,14 @@ class Home extends Component {
               Open Modal
             </Button>
             <Modal
-                style={{ top: 100 }}
-
-                title={this._renderModalHeader()}
+                title={"Mijn Account"}
                 visible={this.state.visible}
-                bodyStyle={{height: 500, width: 500}}
+                bodyStyle={{paddingBottom: 80}}
+                footer={null}
+                onCancel={this.handleCancel}
             >
-              {this._renderModal()}
-
+              {this.state.showBeginScreen && this._renderBeginScreen()}
+              {this.state.showLogin && this._renderLogin()}
             </Modal>
           </div>
         </div>
