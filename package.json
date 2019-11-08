@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^3.25.0",
+    "prop-types": "latest",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-redux": "^7.1.1",
     "react-scripts": "0.9.5",
-    "prop-types": "latest",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0"
   },
