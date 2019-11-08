@@ -1,4 +1,4 @@
-import {LOGIN} from "../actions/types";
+import {REGISTRATION} from "../actions/types";
 
 const initialState = {
     items: [],
@@ -7,7 +7,7 @@ const initialState = {
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case  LOGIN:
+        case  REGISTRATION:
             return {
                 ...state,
                 item: action.payload,
