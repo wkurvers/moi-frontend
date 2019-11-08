@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "antd": "^3.25.0",
+>>>>>>> 74d7cb453990e6898e0296ca62f01182aac1ebe8
     "prop-types": "latest",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
