@@ -4,11 +4,11 @@ import {fetchUsers} from "../actions/userActions";
 
 class Users extends Component {
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.fetchUsers();
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentDidUpdate(nextProps) {
         if (nextProps.newUser){
             this.props.users.unshift(nextProps.newUser)
         }
