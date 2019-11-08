@@ -1,7 +1,7 @@
 import {LOGIN} from "./types";
 
 export const loginUser = (loginData) => dispatch =>  {
-    fetch('http://localhost:8000/api/login/', {
+    fetch('http://localhost:8000/api/token/', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'

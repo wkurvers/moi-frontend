@@ -1,0 +1,14 @@
+.headerMain{
+    background-color: #006989;
+    border: 1px solid rgb(235, 237, 240);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #f8f9fa;
+}
+
+.navbar-light .navbar-brand {
+    color: #f8f9fa;
+    margin-left: 10%;
+    margin-right: 5%;
+}
