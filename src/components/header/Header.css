@@ -12,3 +12,12 @@
     margin-left: 10%;
     margin-right: 5%;
 }
+
+#avatar{
+    color: #01A7C2;
+}
+
+
+.dropdown-toggle::after {
+    margin-right: 10em;
+}
