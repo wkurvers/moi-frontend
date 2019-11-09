@@ -1,5 +1,6 @@
 .App {
-  width: 90%;
+  width: 100%;
+  margin: auto;
 }
 
 .App-logo {
@@ -7,6 +8,12 @@
   height: 80px;
 }
 
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
 
 .App-intro {
   font-size: large;
