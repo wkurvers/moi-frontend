@@ -3,18 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-
-
+    "antd": "latest",
     "prop-types": "latest",
     "react": "^16.10.2",
+    "react-bootstrap": "latest",
     "react-dom": "^16.10.2",
+    "react-horizontal-scrolling-menu": "^0.7.3",
+    "react-redux": "latest",
     "react-router-dom": "^5.1.2",
     "react-scripts": "0.9.5",
     "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0",
-    "antd": "latest",
-    "react-bootstrap": "latest",
-    "react-redux": "latest"
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {},
   "scripts": {
