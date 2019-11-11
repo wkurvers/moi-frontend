@@ -17,7 +17,7 @@ export const Menu = (list, selected) =>
     });
 
 const Arrow = ({text, className}) => {
-    return <div className={className}>{text}</div>;
+    return <div className={'arrows'}>{text}</div>;
 };
 Arrow.propTypes = {
     text: PropTypes.string,

@@ -11,14 +11,16 @@
     line-height: normal;
 }
 
-
+.thumbnail-image {
+    height: 2em;
+    width: 2em;
+}
 
 .categoriesContainer {
     height: 5em;
     line-height: 5em;
     text-align: center;
     background-color: rgba(0, 105, 137, 0.33);
-
 
 
 }
@@ -44,9 +46,11 @@
     border: none;
 
 }
+
 .menu-item-wrapper.active {
     /*border: 1px blue solid;*/
 }
+
 .menu-item.active {
     /*border: 1px green solid;*/
 }
@@ -54,6 +58,6 @@
 .scroll-menu-arrow {
     /*padding: 20px;*/
     cursor: pointer;
-    margin-right: 1em;
-    margin-left: 1em;
+    padding-left: 3em;
+    padding-right: 3em;
 }
