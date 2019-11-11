@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import 'antd/dist/antd.css';
 import './Header.css'
 import {Nav, Navbar, NavDropdown, NavItem,} from 'react-bootstrap'
+import { Avatar } from 'antd';
 
 
 class Header extends Component {
@@ -18,6 +19,7 @@ class Header extends Component {
                         </Nav>
 
                         <Nav className="justify-content-end" activeKey="/home">
+                            <Avatar shape="square" icon="user" />
                             <NavDropdown title="Mijn account" id="nav-dropdown">
                                 <NavDropdown.Item eventKey="4.1">mijn account</NavDropdown.Item>
                                 <NavDropdown.Divider/>
