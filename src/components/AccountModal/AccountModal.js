@@ -13,23 +13,9 @@ class AccountModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: true,
+      visible: false,
       activeComponent: "BeginScreen",
-
-      showLogin: false,
-      showRegistration: false,
-      showBeginScreen: true,
-      showPasswordForgot: false,
-      showPasswordChange: false,
-
-      email: "",
-      password: "",
-
-      errorEmail: false,
-      errorPassword: false,
-      loginError: true,
-      loginErrorMessage: "sidfmds"
-    }
+    };
     this.handleChange = this.handleChange.bind(this);
     this.setActiveComponent = this.setActiveComponent.bind(this);
 
@@ -54,16 +40,17 @@ class AccountModal extends Component {
   }
 
   getTitleName() {
-    if (this.state.showBeginScreen) {
-      return "Mijn account";
-    } else if (this.state.showLogin){
-      return "Inloggen";
-    } else if (this.state.showRegistration){
-      return "Inloggen";
-    } else if (this.state.showPasswordForgot){
-      return "Wachtwoord vergeten";
-    } else if (this.state.showPasswordChange){
-      return "Wachtwoord veranderen";
+    switch(this.state.activeComponent) {
+      case "BeginScreen":
+        return "Mijn account";
+      case "Login":
+        return "Inloggen";
+      case "Register":
+        return "Registreren";
+      case "PasswordForgot":
+        return "Wachtwoord vergeten";
+      case "PasswordChange":
+        return "Wachtwoord veranderen";
     }
   }
 
@@ -79,7 +66,7 @@ class AccountModal extends Component {
         return <BeginScreen setActiveComponent={this.setActiveComponent} />;
       case "Login":
         return <Login setActiveComponent={this.setActiveComponent} />;
-      case "Registration":
+      case "Register":
         return <Register setActiveComponent={this.setActiveComponent} />;
       case "PasswordForgot":
         return <PasswordForgot setActiveComponent={this.setActiveComponent} />

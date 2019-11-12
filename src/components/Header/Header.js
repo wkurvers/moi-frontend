@@ -6,6 +6,7 @@ export default class Header extends Component {
   render() {
     return (
       <div className="header">
+
         <div className="header-title-container">
           <img
             className={"header-image"}
