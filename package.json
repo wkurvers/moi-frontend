@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "antd": "latest",
+    "bootstrap": "^4.3.1",
     "prop-types": "latest",
     "react": "^16.10.2",
     "react-bootstrap": "latest",
