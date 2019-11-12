@@ -1,20 +1,29 @@
 import React, { Component } from "react";
 import "./App.css";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from "react-redux";
 import store from "./store";
-import Users from "./components/Users";
-import Header from "./components/Header/Header";
+import "antd/dist/antd.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import Header from "./components/header/Header";
+import NavBar from "./components/navbar/NavBar";
+import Home from "./screens/Home/Home";
+import Results from "./screens/results/Results";
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="App">
-          <Header />
-          <h1>Test</h1>
-          <Users />
-        </div>
+        <NavBar />
+        <Header />
+
+        <Router>
+          <Switch>
+            <Route exact path={"/"} component={Home} />
+            <Route exact path={"/results"} component={Results} />
+          </Switch>
+        </Router>
       </Provider>
     );
   }

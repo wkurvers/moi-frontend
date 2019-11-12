@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchUsers} from "../actions/userActions";
-import PropTypes from 'prop-types';
 
 class Users extends Component {
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.fetchUsers();
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentDidUpdate(nextProps) {
         if (nextProps.newUser){
             this.props.users.unshift(nextProps.newUser)
         }
@@ -30,11 +29,6 @@ class Users extends Component {
     }
 }
 
-Users.propTypes = {
-    fetchUsers: PropTypes.func.isRequired,
-    users: PropTypes.array.isRequired,
-
-};
 
 const mapStateToProps = state =>  ({
     users: state.users.items,

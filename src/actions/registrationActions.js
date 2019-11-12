@@ -1,7 +1,7 @@
-import {LOGIN} from "./types";
+import {REGISTRATION} from "./types";
 
-export const loginUser = (loginData) => dispatch =>  {
-    fetch('http://localhost:8000/api/token/', {
+export const registerUser = (loginData) => dispatch =>  {
+    fetch('http://localhost:8000/api/register/', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
@@ -10,9 +10,8 @@ export const loginUser = (loginData) => dispatch =>  {
     })
         .then(res => res.json())
         .then(data =>  dispatch({
-            type: LOGIN,
+            type: REGISTRATION,
             payload: data,
         }))
 };
-
 

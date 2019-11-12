@@ -1,0 +1,63 @@
+.topImageContainer {
+    height: 12em;
+    line-height: 12em;
+    text-align: center;
+    background-color: #eaebed;
+}
+
+#numberOfResults {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+.thumbnail-image {
+    height: 2em;
+    width: 2em;
+}
+
+.categoriesContainer {
+    height: 5em;
+    line-height: 5em;
+    text-align: center;
+    background-color: rgba(0, 105, 137, 0.33);
+
+
+}
+
+.categoriesList {
+    display: inline-block;
+    vertical-align: middle;
+    justify-content: space-evenly;
+}
+
+/* ######### scrolling categories list #########*/
+
+.categoriesTopContainer {
+    /*width: 80%;*/
+
+}
+
+.menu-item {
+    padding: 0 10px;
+    margin: 0px 10px;
+    user-select: none;
+    cursor: pointer;
+    border: none;
+
+}
+
+.menu-item-wrapper.active {
+    /*border: 1px blue solid;*/
+}
+
+.menu-item.active {
+    /*border: 1px green solid;*/
+}
+
+.scroll-menu-arrow {
+    /*padding: 20px;*/
+    cursor: pointer;
+    padding-left: 3em;
+    padding-right: 3em;
+}
