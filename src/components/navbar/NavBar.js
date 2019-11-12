@@ -14,8 +14,7 @@ class NavBar extends Component {
             <Navbar.Brand href="/">MOI</Navbar.Brand>
             <Nav className="mr-auto">
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="results">Results</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
+              <Nav.Link href="results">Zoekprofiel</Nav.Link>
             </Nav>
 
             <Nav className="justify-content-end" activeKey="/home">
