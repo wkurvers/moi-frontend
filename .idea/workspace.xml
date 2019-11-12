@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c9237db-8d31-4c5e-9b51-0499ef1c9748" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/AccountModal/AccountModal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/AccountModal/AccountModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Home/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Home/Home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Home/Home.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +26,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/AccountModal" />
       <recent name="$PROJECT_DIR$/src/screens/Home" />
     </key>
   </component>
@@ -49,7 +53,7 @@
       <option name="presentableId" value="Default" />
       <updated>1573214007113</updated>
       <workItem from="1573214008159" duration="6852000" />
-      <workItem from="1573549899629" duration="70000" />
+      <workItem from="1573549899629" duration="4017000" />
     </task>
     <servers />
   </component>
