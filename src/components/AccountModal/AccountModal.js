@@ -1,29 +1,39 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
-import {Modal, Button, Input, Typography, Divider} from 'antd';
+import {Modal} from 'antd';
 import "./AccountModal.css"
+import Login from "./Login";
+import Register from "./Register";
+import BeginScreen from "./BeginScreen";
+import PasswordForgot from "./PasswordForgot";
+import PasswordChange from "./PasswordChange";
 
-const { Title } = Typography;
 
-
-class Home extends Component {
+class AccountModal extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       visible: true,
+      activeComponent: "BeginScreen",
+
       showLogin: false,
+      showRegistration: false,
       showBeginScreen: true,
       showPasswordForgot: false,
-      showPasswordChange: false
+      showPasswordChange: false,
+
+      email: "",
+      password: "",
+
+      errorEmail: false,
+      errorPassword: false,
+      loginError: true,
+      loginErrorMessage: "sidfmds"
     }
+    this.handleChange = this.handleChange.bind(this);
+    this.setActiveComponent = this.setActiveComponent.bind(this);
+
   }
-
-  componentDidMount() {
-
-  }
-
 
   showModal() {
     this.setState({
@@ -34,23 +44,21 @@ class Home extends Component {
   handleCancel = e => {
     this.setState({
       visible: false,
+      activeComponent: "BeginScreen"
     });
-    this.resetToDefault()
   };
 
-  resetToDefault() {
-    this.setState({
-      showLogin: false,
-      showBeginScreen: true,
-      showPasswordForgot: false,
-      showPasswordChange: false
-    })
+  handleChange(event) {
+    const {name, value} = event.target;
+    this.setState({[name]: value});
   }
 
   getTitleName() {
     if (this.state.showBeginScreen) {
-      return "Registreren";
+      return "Mijn account";
     } else if (this.state.showLogin){
+      return "Inloggen";
+    } else if (this.state.showRegistration){
       return "Inloggen";
     } else if (this.state.showPasswordForgot){
       return "Wachtwoord vergeten";
@@ -59,175 +67,40 @@ class Home extends Component {
     }
   }
 
-  switchComponent(component) {
-    switch(component) {
+  setActiveComponent(component) {
+    this.setState({
+      activeComponent: component
+    })
+  }
+
+  getActiveComponent() {
+    switch(this.state.activeComponent) {
       case "BeginScreen":
-        this.setState({
-          showLogin: false,
-          showBeginScreen: true,
-          showPasswordForgot: false,
-          showPasswordChange: false
-        });
-        break;
+        return <BeginScreen setActiveComponent={this.setActiveComponent} />;
       case "Login":
-        this.setState({
-          showLogin: true,
-          showBeginScreen: false,
-          showPasswordForgot: false,
-          showPasswordChange: false
-        });
-        break;
+        return <Login setActiveComponent={this.setActiveComponent} />;
+      case "Registration":
+        return <Register setActiveComponent={this.setActiveComponent} />;
       case "PasswordForgot":
-        this.setState({
-          showLogin: false,
-          showBeginScreen: false,
-          showPasswordForgot: true,
-          showPasswordChange: false
-        });
-        break;
+        return <PasswordForgot setActiveComponent={this.setActiveComponent} />
       case "PasswordChange":
-        this.setState({
-          showLogin: false,
-          showBeginScreen: false,
-          showPasswordForgot: false,
-          showPasswordChange: true
-        });
-        break;
+        return <PasswordChange setActiveComponent={this.setActiveComponent} />
     }
   }
-
-  register() {
-    alert("Registreren")
-  }
-
-  sendPasswordVerification() {
-    this.switchComponent("PasswordChange")
-  }
-
-  changePassword() {
-    this.switchComponent("Login")
-  }
-
-  _renderBeginScreen() {
-    return (
-        <div>
-          <div className={"form-container"}>
-            <Title className={"label"} level={4}>E-mailadres</Title>
-            <Input className={"input"} placeholder="Vul je e-mailadres in" />
-            <Title className={"label"} level={4}>Wachtwoord</Title>
-            <Input className={"input"} placeholder="Vul je wachtwoord in" />
-            <Title className={"label"} level={4}>Herhaal wachtwoord</Title>
-            <Input className={"input"} placeholder="Vul nog een keer je wachtwoord in" />
-          </div>
-
-          <div className={"button-container"}>
-            <div className={"custom-button"} onClick={() => this.register()}>
-              Registreren
-            </div>
-          </div>
-
-          <Divider className={"divider"}>Heb je al een account?</Divider>
-
-          <div className={"button-container"}>
-            <div className={"custom-button"} onClick={() => this.switchComponent("Login")}>
-              Inloggen
-            </div>
-          </div>
-        </div>
-    )
-  }
-
-  _renderLogin() {
-    return (
-        <div>
-          <div className={"form-container"}>
-            <Title className={"label"} level={4}>E-mailadres</Title>
-            <Input className={"input"} placeholder="Vul je e-mailadres in" />
-            <Title className={"label"} level={4}>Wachtwoord</Title>
-            <Input className={"input"} placeholder="Vul je wachtwoord in" />
-          </div>
-          <div className={"password-forgot-container"}>
-            <text className={"text-link"} onClick={() => this.switchComponent("PasswordForgot")}>{"Wachtwoord vergeten?"}</text>
-          </div>
-          <div className={"button-container"}>
-            <div className={"custom-button"} onClick={() => this.switchComponent("Login")}>
-              Inloggen
-            </div>
-          </div>
-
-          <div className={"back-container"}>
-            <text className={"text-link"} onClick={() => this.switchComponent("BeginScreen")}>{"Terug"}</text>
-          </div>
-
-        </div>
-    )
-  }
-
-  _renderPasswordForgot() {
-    return (
-        <div>
-
-          <div className={"form-container"}>
-            <Title className={"label"} level={4}>E-mailadres</Title>
-            <Input className={"input"} placeholder="Vul je e-mailadres in" />
-          </div>
-
-          <div className={"button-container"}>
-            <div className={"custom-button"} onClick={() => this.sendPasswordVerification()}>
-                Versturen
-            </div>
-          </div>
-
-          <div className={"back-container"}>
-            <text className={"text-link"} onClick={() => this.switchComponent("BeginScreen")}>{"Terug"}</text>
-          </div>
-
-        </div>
-    )
-  }
-
-  _renderPasswordChange() {
-    return (
-        <div>
-          <div className={"form-container"}>
-            <Title className={"label"} level={4}>Verificatiecode</Title>
-            <Input className={"input"} placeholder="Vul je ontvangen verificatiecode in" />
-            <Title className={"label"} level={4}>Wachtwoord</Title>
-            <Input className={"input"} placeholder="Vul je wachtwoord in" />
-            <Title className={"label"} level={4}>Herhaal wachtwoord</Title>
-            <Input className={"input"} placeholder="Vul nog een keer je wachtwoord in" />
-          </div>
-          <div className={"button-container"}>
-            <div className={"custom-button"} onClick={() => this.changePassword()}>
-              Verander uw wachtwoord
-            </div>
-          </div>
-
-          <div className={"back-container"}>
-            <text className={"text-link"} onClick={() => this.switchComponent("BeginScreen")}>{"Terug"}</text>
-          </div>
-
-        </div>
-    )
-  }
-
 
   render() {
     return (
       <Modal
           title={this.getTitleName()}
           visible={this.state.visible}
-          bodyStyle={{paddingBottom: 80}}
+          bodyStyle={{paddingBottom: 40}}
           footer={null}
           onCancel={this.handleCancel}
       >
-        {this.state.showBeginScreen && this._renderBeginScreen()}
-        {this.state.showLogin && this._renderLogin()}
-        {this.state.showPasswordForgot && this._renderPasswordForgot()}
-        {this.state.showPasswordChange && this._renderPasswordChange()}
+        {this.getActiveComponent()}
       </Modal>
     );
   }
 }
 
-export default Home;
+export default AccountModal;
