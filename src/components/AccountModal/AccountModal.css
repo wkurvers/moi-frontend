@@ -16,6 +16,10 @@
     color: #fff;
 }
 
+.ant-modal-close-x {
+    color: white;
+}
+
 .form-container {
     margin-bottom: 30px;
 }
@@ -131,7 +135,7 @@
     margin-left: 0px !important;
 }
 
-.login-button {
+.button-margin-top {
     margin-top: 40px;
 }
 
@@ -158,4 +162,15 @@
 
 .error-text {
     color: red;
+}
+
+.input-error input {
+    background-color: #ffccbc !important;
+}
+.input-error {
+    background-color: #ffccbc !important;
+}
+
+.success:focus {
+    border:2px solid red;
 }
