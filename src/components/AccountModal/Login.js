@@ -18,7 +18,7 @@ class Login extends Component {
       errorMessage: ""
     };
     this.handleChange = this.handleChange.bind(this);
-
+    this.keyPress = this.keyPress.bind(this);
   }
 
   handleChange(event) {
@@ -64,6 +64,17 @@ class Login extends Component {
     this.validateFields();
   }
 
+  keyPress(e){
+    if(e.keyCode === 13){
+      this.handleSubmit(e);
+    }
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.login();
+  }
+
   render() {
     return (
         <div>
@@ -76,6 +87,7 @@ class Login extends Component {
                 value={this.state.email}
                 name={"email"}
                 onChange={this.handleChange}
+                onKeyDown={this.keyPress}
             />
             <Title className={"label"} level={4}>Wachtwoord</Title>
             <Input.Password
@@ -84,6 +96,7 @@ class Login extends Component {
                 value={this.state.password}
                 name={"password"}
                 onChange={this.handleChange}
+                onKeyDown={this.keyPress}
             />
           </div>
 

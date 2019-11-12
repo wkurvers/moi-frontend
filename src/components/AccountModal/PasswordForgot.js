@@ -10,16 +10,10 @@ class PasswordForgot extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: "",
 
-      errorEmail: false,
-      errorPassword: false,
-      loginError: true,
-      loginErrorMessage: "sidfmds"
     }
     this.handleChange = this.handleChange.bind(this);
-
+    this.keyPress = this.keyPress.bind(this);
   }
 
   handleChange(event) {
@@ -31,13 +25,27 @@ class PasswordForgot extends Component {
     this.props.setActiveComponent("PasswordChange")
   }
 
+  keyPress(e){
+    if(e.keyCode === 13){
+      this.handleSubmit(e);
+    }
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.sendPasswordVerification();
+  }
+
   render() {
     return (
         <div>
 
           <div className={"form-container"}>
             <Title className={"label"} level={4}>E-mailadres</Title>
-            <Input className={"input"} placeholder="Vul je e-mailadres in" />
+            <Input
+                className={"input"} placeholder="Vul je e-mailadres in"
+                onKeyDown={this.keyPress}
+            />
           </div>
 
           <div className={"button-container"}>
