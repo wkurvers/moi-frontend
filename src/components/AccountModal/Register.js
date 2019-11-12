@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Input, Typography, Divider} from 'antd';
+import {connect} from 'react-redux';
+import {registerUser} from "../../actions/registrationActions";
 import "./AccountModal.css"
 
 const { Title } = Typography;
@@ -96,6 +98,26 @@ class Register extends Component {
   register() {
     this.clearErrors();
     this.validateFields();
+    let userData = {
+      "username": this.state.email,
+      "email": this.state.email,
+      "password": this.state.firstPassword
+    }
+    //------------TEST---------------//
+    fetch('http://localhost:8000/api/register/', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if(data != 401) {
+          this.props.setActiveComponent("Login")
+        }
+      })
+    //-------------------------------//
   }
 
   keyPress(e){

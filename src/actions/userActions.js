@@ -10,7 +10,7 @@ export const fetchUsers = () => dispatch =>  {
 };
 
 export const createUser = (userData) => dispatch =>  {
-    fetch('http://localhost:8000/api/user/', {
+    fetch('http://localhost:8000/api/register/', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'

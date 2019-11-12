@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Modal, Button, Input } from "antd";
 import "./Home.css";
 import Header from "../../components/header/Header";
+import {registerUser} from "../../actions/registrationActions";
 
 class Home extends Component {
   constructor(props) {
