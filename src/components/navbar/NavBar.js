@@ -3,7 +3,7 @@ import "antd/dist/antd.css";
 import "./NavBar.css";
 import { Nav, Navbar, NavDropdown, NavItem } from "react-bootstrap";
 import { Avatar, Icon } from "antd";
-import userImage from "../../assests/user_84308.png";
+import userImage from "../../assets/user_84308.png";
 
 class NavBar extends Component {
   render() {
