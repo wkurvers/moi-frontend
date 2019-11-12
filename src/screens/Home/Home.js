@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import { Modal, Button, Input } from 'antd';
-import "./Home.css"
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Modal, Button, Input } from "antd";
+import "./Home.css";
+import Header from "../../components/header/Header";
 import AccountModal from  "../../components/AccountModal/AccountModal.js"
 
 class Home extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -28,16 +28,17 @@ class Home extends Component {
 
   render() {
     return (
+      <div>
+        <Header />
+
         <div>
-          <div>
-            <Button type="primary" onClick={this.showModal}>
-              Open Modal
-            </Button>
-            <AccountModal ref={this.accountModal} />
+          <Button type="primary" onClick={this.showModal}>
+            Open Modal
+          </Button>
+          <AccountModal ref={this.accountModal} />
 
-
-          </div>
         </div>
+      </div>
     );
   }
 }

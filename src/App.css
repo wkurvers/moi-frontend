@@ -1,6 +1,6 @@
-.App {
-  width: 100%;
-  margin: auto;
+@fontface {
+  font-family: "Raleway", sans-serif;
+  src: url("https://fonts.googleapis.com/css?family=Raleway:300,400,600,700&display=swap");
 }
 
 .App-logo {
@@ -20,6 +20,25 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+h1 {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700 !important;
+}
+
+h3 {
+  font-family: "Raleway", sans-serif;
+  font-weight: 300 !important;
+}
+
+p {
+  font-family: "Raleway", sans-serif;
+  font-weight: 300 !important;
 }
