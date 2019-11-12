@@ -1,0 +1,161 @@
+.ant-modal-header {
+    background: #01A7C2 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 80px;
+}
+
+.ant-modal-content {
+    background-color: #f2f2f2;
+}
+
+.ant-modal-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.form-container {
+    margin-bottom: 30px;
+}
+
+.label {
+    color: #616161 !important;
+}
+
+.input {
+    margin-bottom: 20px !important;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.two-button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.custom-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 40px;
+    background-color: #6b9b37;
+    color: white;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.custom-button:hover {
+    background-color: #ddd;
+    color: #fff !important;
+}
+
+.custom-button-text {
+    color: #fff !important;
+}
+
+.custom-button-outline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 40px;
+
+    border-width: 1px;
+    border-color: #6b9b3755;
+    border-style: solid;
+
+    background-color: #f2f2f2;
+    color: #6b9b37;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.custom-button-outline:hover {
+    background-color: #ddd;
+    color: #fff !important;
+}
+
+.divider {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: #616161 !important;
+}
+
+.text-link {
+    color: #01A7C2;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.password-forgot-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.back-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.menu-container {
+    margin-top: 50px;
+}
+
+.menu-section {
+    margin-top: 15px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+    margin-bottom: 1px !important;
+    margin-left: 0px !important;
+}
+
+.login-button {
+    margin-top: 40px;
+}
+
+.menu-item:hover {
+    color: #6b9b37;
+}
+
+.icon {
+    font-size: 24px;
+}
+
+.menu-item-text {
+    padding-left: 15px;
+    font-size: 14px;
+}
+
+.error-container {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    padding: 10px;
+    justify-content: flex-start;
+}
+
+.error-text {
+    color: red;
+}

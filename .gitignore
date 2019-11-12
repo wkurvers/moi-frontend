@@ -1,2 +1,4 @@
 node_modules
 src/conf.json
+.idea/
+package-lock.json

@@ -4,11 +4,27 @@ import "./NavBar.css";
 import { Nav, Navbar, NavDropdown, NavItem } from "react-bootstrap";
 import { Avatar, Icon } from "antd";
 import userImage from "../../assets/user_84308.png";
+import AccountModal from  "../../components/AccountModal/AccountModal.js"
 
 class NavBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+    };
+
+    this.accountModal = React.createRef()
+  }
+
+  showModal = () => {
+    this.accountModal.current.showModal();
+  };
+
   render() {
     return (
       <div>
+        <AccountModal ref={this.accountModal} />
+
         <div className={"headerMain"}>
           <Navbar>
             <Navbar.Brand href="/">MOI</Navbar.Brand>
@@ -18,7 +34,7 @@ class NavBar extends Component {
             </Nav>
 
             <Nav className="justify-content-end" activeKey="/home">
-              <Avatar icon="user" />
+              <Avatar icon="user"  onClick={this.showModal}/>
             </Nav>
           </Navbar>
         </div>
