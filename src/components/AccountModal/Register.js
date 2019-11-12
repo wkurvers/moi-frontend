@@ -21,6 +21,7 @@ class Register extends Component {
       errorMessage: ""
     }
     this.handleChange = this.handleChange.bind(this);
+    this.keyPress = this.keyPress.bind(this);
 
   }
 
@@ -97,6 +98,18 @@ class Register extends Component {
     this.validateFields();
   }
 
+  keyPress(e){
+    if(e.keyCode === 13){
+      this.handleSubmit(e);
+    }
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.register();
+  }
+
+
   render() {
     return (
         <div>
@@ -108,6 +121,7 @@ class Register extends Component {
                 value={this.state.email}
                 name={"email"}
                 onChange={this.handleChange}
+                onKeyDown={this.keyPress}
             />
 
             <Title className={"label"} level={4}>Wachtwoord</Title>
@@ -117,6 +131,7 @@ class Register extends Component {
                 value={this.state.firstPassword}
                 name={"firstPassword"}
                 onChange={this.handleChange}
+                onKeyDown={this.keyPress}
             />
 
             <Title className={"label"} level={4}>Herhaal wachtwoord</Title>
@@ -126,6 +141,7 @@ class Register extends Component {
                 value={this.state.secondPassword}
                 name={"secondPassword"}
                 onChange={this.handleChange}
+                onKeyDown={this.keyPress}
             />
           </div>
 
