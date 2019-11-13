@@ -182,3 +182,7 @@
 .logout-button-container {
     margin-top: 30px;
 }
+
+.logged-in-container {
+    margin-top: 0px;
+}

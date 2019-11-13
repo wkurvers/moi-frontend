@@ -7,15 +7,18 @@ import BeginScreen from "./BeginScreen";
 import PasswordForgot from "./PasswordForgot";
 import PasswordChange from "./PasswordChange";
 import LoggedIn from "./LoggedIn";
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 
 class AccountModal extends Component {
 
   constructor(props) {
+    let token = reactLocalStorage.get("authAccessToken");
+
     super(props);
     this.state = {
       visible: false,
-      activeComponent: "BeginScreen",
+      activeComponent: token === null ? "BeginScreen" : "LoggedIn",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
@@ -32,7 +35,6 @@ class AccountModal extends Component {
   handleCancel = e => {
     this.setState({
       visible: false,
-      activeComponent: "BeginScreen"
     });
   };
 

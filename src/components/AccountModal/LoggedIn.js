@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Icon} from 'antd';
 import "./AccountModal.css"
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 class LoggedIn extends Component {
 
@@ -10,6 +11,7 @@ class LoggedIn extends Component {
   }
 
   logout() {
+    reactLocalStorage.clear();
     this.props.setActiveComponent("BeginScreen")
   }
 
@@ -18,22 +20,35 @@ class LoggedIn extends Component {
     return (
         <div>
 
-          <div className={"menu-container"}>
-            <div className={"menu-item"}>
-              <Icon type="file-text" className={"icon"}/>
-              <text className={"menu-item-text"}>Algemene voorwaarden</text>
+          <div className={"menu-container logged-in-container"}>
+
+            <div className={"menu-section"}>
+              <div className={"menu-item"}>
+                <Icon type="user" className={"icon"}/>
+                <text className={"menu-item-text"}>Mijn gegevens</text>
+              </div>
+              <div className={"menu-item"}>
+                <Icon type="heart" className={"icon"}/>
+                <text className={"menu-item-text"}>Favorieten</text>
+              </div>
             </div>
 
-            <div className={"menu-item"}>
-              <Icon type="key" className={"icon"}/>
-              <text className={"menu-item-text"}>Privacy verklaring</text>
+            <div className={"menu-section"}>
+              <div className={"menu-item"}>
+                <Icon type="file-text" className={"icon"}/>
+                <text className={"menu-item-text"}>Algemene voorwaarden</text>
+              </div>
 
-            </div>
-            <div className={"menu-item"}>
-              <Icon type="info-circle" className={"icon"}/>
-              <text className={"menu-item-text"}>FAQ's</text>
-            </div>
+              <div className={"menu-item"}>
+                <Icon type="key" className={"icon"}/>
+                <text className={"menu-item-text"}>Privacy verklaring</text>
 
+              </div>
+              <div className={"menu-item"}>
+                <Icon type="info-circle" className={"icon"}/>
+                <text className={"menu-item-text"}>FAQ's</text>
+              </div>
+            </div>
 
             <div className={"menu-section"}>
               <div className={"menu-item"}>
