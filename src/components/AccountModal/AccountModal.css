@@ -174,3 +174,11 @@
 .success:focus {
     border:2px solid red;
 }
+
+.logout-button {
+    background-color: #e57373;
+}
+
+.logout-button-container {
+    margin-top: 30px;
+}

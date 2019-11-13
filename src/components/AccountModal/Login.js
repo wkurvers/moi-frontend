@@ -78,14 +78,14 @@ class Login extends Component {
         if(res.status == 200) {
           return res.json()
         } else {
-          this.setState({emailError: true, errorMessage: "Inloggegevens zijn onjuist"})
+          this.setState({emailError: true, passwordError: true, errorMessage: "Inloggegevens zijn onjuist"})
         }
       })
       .then(data => {
         console.log(data)
         if(data != undefined) {
           this.setState({emailError: false, errorMessage: ""})
-          this.props.closeModal()
+          this.props.setActiveComponent("LoggedIn")
         }
         
       })

@@ -6,6 +6,7 @@ import Register from "./Register";
 import BeginScreen from "./BeginScreen";
 import PasswordForgot from "./PasswordForgot";
 import PasswordChange from "./PasswordChange";
+import LoggedIn from "./LoggedIn";
 
 
 class AccountModal extends Component {
@@ -52,6 +53,8 @@ class AccountModal extends Component {
         return "Wachtwoord vergeten";
       case "PasswordChange":
         return "Wachtwoord veranderen";
+      case "LoggedIn":
+        return "Mijn account";
     }
   }
 
@@ -66,13 +69,15 @@ class AccountModal extends Component {
       case "BeginScreen":
         return <BeginScreen setActiveComponent={this.setActiveComponent} />;
       case "Login":
-        return <Login setActiveComponent={this.setActiveComponent} closeModal={this.handleCancel} />;
+        return <Login setActiveComponent={this.setActiveComponent}/>;
       case "Register":
         return <Register setActiveComponent={this.setActiveComponent} />;
       case "PasswordForgot":
         return <PasswordForgot setActiveComponent={this.setActiveComponent} />
       case "PasswordChange":
         return <PasswordChange setActiveComponent={this.setActiveComponent} />
+      case "LoggedIn":
+        return <LoggedIn setActiveComponent={this.setActiveComponent} closeModal={this.handleCancel} />
     }
   }
 
