@@ -6,16 +6,7 @@ class BeginScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      email: "",
-      password: "",
-
-      errorEmail: false,
-      errorPassword: false,
-      loginError: true,
-      loginErrorMessage: "sidfmds"
-    }
-
+    this.state = {}
   }
 
 
