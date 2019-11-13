@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import "antd/dist/antd.css";
 import "./NavBar.css";
-import { Nav, Navbar, NavDropdown, NavItem } from "react-bootstrap";
-import { Avatar, Icon } from "antd";
-import userImage from "../../assets/user_84308.png";
+import { Nav, Navbar} from "react-bootstrap";
+import { Avatar} from "antd";
 import AccountModal from  "../../components/AccountModal/AccountModal.js"
 
 class NavBar extends Component {
@@ -34,21 +33,7 @@ class NavBar extends Component {
             </Nav>
 
             <Nav className="justify-content-end" activeKey="/home">
-              <Avatar icon="user" onClick={this.showModal}/>
-              {/*<div className={'dropdownContainer'}>*/}
-              {/*    <NavDropdown title={*/}
-              {/*        <div className="pull-left">*/}
-              {/*            <img className="thumbnail-image"*/}
-              {/*                 src={userImage}*/}
-              {/*                 alt="user pic"*/}
-              {/*            />*/}
-              {/*        </div>*/}
-              {/*    } id="nav-dropdown">*/}
-              {/*        <NavDropdown.Item eventKey="4.1">mijn account</NavDropdown.Item>*/}
-              {/*        <NavDropdown.Divider/>*/}
-              {/*        <NavDropdown.Item eventKey="4.2">favorieten</NavDropdown.Item>*/}
-              {/*    </NavDropdown>*/}
-              {/*</div>*/}
+              <Avatar icon="user"  onClick={this.showModal}/>
             </Nav>
           </Navbar>
         </div>
