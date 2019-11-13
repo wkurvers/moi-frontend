@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Input, Typography} from 'antd';
-import "./AccountModal.css"
+import "./AccountModal.css";
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 const { Title } = Typography;
 
@@ -85,6 +86,9 @@ class Login extends Component {
         console.log(data)
         if(data != undefined) {
           this.setState({emailError: false, errorMessage: ""})
+          reactLocalStorage.set("authAccessToken", data.access);
+
+          reactLocalStorage.set("authRefreshToken", data.refresh);
           this.props.setActiveComponent("LoggedIn")
         }
         
