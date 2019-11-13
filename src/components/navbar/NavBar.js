@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import "antd/dist/antd.css";
 import "./NavBar.css";
-import { Nav, Navbar, NavDropdown, NavItem } from "react-bootstrap";
-import { Avatar, Icon } from "antd";
-import userImage from "../../assets/user_84308.png";
+import { Nav, Navbar} from "react-bootstrap";
+import { Avatar} from "antd";
 import AccountModal from  "../../components/AccountModal/AccountModal.js"
 
 class NavBar extends Component {
