@@ -62,6 +62,24 @@ class Login extends Component {
   login() {
     this.clearErrors();
     this.validateFields();
+    let userData = {
+      "username": this.state.email,
+      "password": this.state.password
+    }
+    //------------TEST---------------//
+    fetch('http://localhost:8000/api/token/', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        this.props.closeModal()
+      })
+    //-------------------------------//
   }
 
   keyPress(e){

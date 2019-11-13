@@ -17,6 +17,7 @@ class AccountModal extends Component {
       activeComponent: "BeginScreen",
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
     this.setActiveComponent = this.setActiveComponent.bind(this);
 
   }
@@ -65,7 +66,7 @@ class AccountModal extends Component {
       case "BeginScreen":
         return <BeginScreen setActiveComponent={this.setActiveComponent} />;
       case "Login":
-        return <Login setActiveComponent={this.setActiveComponent} />;
+        return <Login setActiveComponent={this.setActiveComponent} closeModal={this.handleCancel} />;
       case "Register":
         return <Register setActiveComponent={this.setActiveComponent} />;
       case "PasswordForgot":
