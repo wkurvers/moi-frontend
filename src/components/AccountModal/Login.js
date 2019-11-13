@@ -74,10 +74,20 @@ class Login extends Component {
         },
         body: JSON.stringify(userData)
     })
-      .then(res => res.json())
+      .then(res => {
+        if(res.status == 200) {
+          return res.json()
+        } else {
+          this.setState({emailError: true, errorMessage: "Inloggegevens zijn onjuist"})
+        }
+      })
       .then(data => {
         console.log(data)
-        this.props.closeModal()
+        if(data != undefined) {
+          this.setState({emailError: false, errorMessage: ""})
+          this.props.closeModal()
+        }
+        
       })
     //-------------------------------//
   }
