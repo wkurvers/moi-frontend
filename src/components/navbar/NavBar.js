@@ -3,7 +3,7 @@ import "antd/dist/antd.css";
 import "./NavBar.css";
 import { Nav, Navbar} from "react-bootstrap";
 import { Avatar} from "antd";
-import AccountModal from  "../../components/AccountModal/AccountModal.js"
+import AccountModal from  "../../components/accountModal/AccountModal.js"
 
 class NavBar extends Component {
   constructor(props) {
