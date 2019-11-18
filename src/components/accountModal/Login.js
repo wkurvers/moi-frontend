@@ -138,7 +138,7 @@ class Login extends Component {
           </div>
           {(this.state.emailError || this.state.passwordError) && (
               <div className={"error-container"}>
-                <text className={"error-text"}>{this.state.errorMessage}</text>
+                <div className={"error-text"}>{this.state.errorMessage}</div>
               </div>
           )}
           <div className={"button-container button-margin-top"}>
