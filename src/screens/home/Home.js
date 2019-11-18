@@ -3,7 +3,9 @@ import "./Home.css";
 import Header from "../../components/header/Header";
 import LocationModal from  "../../components/locationModal/LocationModal.js"
 
+
 class Home extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -15,9 +17,10 @@ class Home extends Component {
     this.locationModal = React.createRef()
   }
 
-  componentDidMount() {
 
+  componentDidMount() {
   }
+
 
   showModal = () => {
     this.locationModal.current.showModal();
