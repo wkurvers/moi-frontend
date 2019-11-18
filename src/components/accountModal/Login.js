@@ -26,7 +26,6 @@ class Login extends Component {
 
   componentDidUpdate() {
     if(this.props.response.status) {
-      console.log(this.props.response)
       if(this.props.response.status === 200) {
         //TODO use redux???
         reactLocalStorage.set("authAccessToken", this.props.response.access);

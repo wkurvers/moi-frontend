@@ -1,7 +1,7 @@
 import {LOGIN, RESET_LOGIN_RESPONSE} from "./types";
-
+import {API_URL} from "../conf.js";
 export const loginUser = (loginData) => dispatch =>  {
-    fetch('http://localhost:8000/api/token/', {
+    fetch(API_URL + '/api/token/', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
