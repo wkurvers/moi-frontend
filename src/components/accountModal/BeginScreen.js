@@ -31,29 +31,29 @@ class BeginScreen extends Component {
           <div className={"menu-container"}>
             <div className={"menu-item"}>
               <Icon type="file-text" className={"icon"}/>
-              <text className={"menu-item-text"}>Algemene voorwaarden</text>
+              <div className={"menu-item-text"}>Algemene voorwaarden</div>
             </div>
 
             <div className={"menu-item"}>
               <Icon type="key" className={"icon"}/>
-              <text className={"menu-item-text"}>Privacy verklaring</text>
+              <div className={"menu-item-text"}>Privacy verklaring</div>
 
             </div>
             <div className={"menu-item"}>
               <Icon type="info-circle" className={"icon"}/>
-              <text className={"menu-item-text"}>FAQ's</text>
+              <div className={"menu-item-text"}>FAQ's</div>
             </div>
 
 
             <div className={"menu-section"}>
               <div className={"menu-item"}>
                 <Icon type="link" className={"icon"}/>
-                <text className={"menu-item-text"}>Innovatiespotter</text>
+                <div className={"menu-item-text"}>Innovatiespotter</div>
               </div>
 
               <div className={"menu-item"}>
                 <Icon type="message" className={"icon"}/>
-                <text className={"menu-item-text"}>Taal</text>
+                <div className={"menu-item-text"}>Taal</div>
               </div>
             </div>
           </div>

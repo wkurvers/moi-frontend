@@ -16,15 +16,41 @@ class Register extends Component {
       firstPassword: "",
       secondPassword: "",
 
-
       emailError: false,
       firstPasswordError: false,
       secondPasswordError: false,
-      errorMessage: ""
+      errorMessage: "",
+      response: {}
     }
     this.handleChange = this.handleChange.bind(this);
     this.keyPress = this.keyPress.bind(this);
+  }
 
+  componentDidUpdate() {
+    if(this.props.response.status) {
+      if(this.props.response.status === 201) {
+        this.setState({
+          "emailError": false,
+          "errorMessage": ""
+        })
+        this.props.setActiveComponent("Login")
+      } else if(this.props.response.status === 406) {
+        this.setState({
+          "emailError": true,
+          "errorMessage": "Je inloggegevens zijn onjuist"
+        })
+      } else if(this.props.response.status === 409) {
+        this.setState({
+          "emailError": true,
+          "errorMessage": "Deze e-mail is al bij ons in gebruik"
+        })
+      } else {
+        this.setState({
+          "emailError": true,
+          "errorMessage": "Er is iets fout gegaan"
+        })
+      }
+    }
   }
 
   handleChange(event) {
@@ -103,21 +129,7 @@ class Register extends Component {
       "email": this.state.email,
       "password": this.state.firstPassword
     }
-    //------------TEST---------------//
-    fetch('http://localhost:8000/api/register/', {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(userData)
-    })
-      .then(res => res.json())
-      .then(data => {
-        if(data != 401) {
-          this.props.setActiveComponent("Login")
-        }
-      })
-    //-------------------------------//
+    this.props.registerUser(userData)
   }
 
   keyPress(e){
@@ -169,7 +181,7 @@ class Register extends Component {
 
           {(this.state.emailError || this.state.firstPasswordError || this.state.secondPasswordError) && (
               <div className={"error-container"}>
-                <text className={"error-text"}>{this.state.errorMessage}</text>
+                <div className={"error-text"}>{this.state.errorMessage}</div>
               </div>
           )}
 
@@ -195,5 +207,7 @@ class Register extends Component {
     );
   }
 }
-
-export default Register;
+const mapStateToProps = state =>  ({
+    response: state.register.item
+});
+export default connect(mapStateToProps,{registerUser})(Register);
