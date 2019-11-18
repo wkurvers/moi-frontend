@@ -6,7 +6,6 @@ import {Icon, Modal, Input, Slider, InputNumber} from 'antd';
 import './Results.css';
 import {Container, Row, Col} from 'react-bootstrap';
 import Image from "react-bootstrap/Image";
-import "../../components/searchbar/SearchBar";
 
 class Results extends Component {
 
