@@ -26,7 +26,17 @@ class NavBar extends Component {
 
         <div className={"headerMain"}>
           <Navbar>
-            <Navbar.Brand href="/">MOI</Navbar.Brand>
+            <Navbar.Brand href="/">
+              <img
+                style={{ display: "inline-block", marginRight: 10, marginTop: 3 }}
+                src={require("../../assets/MOI_logo.png")}
+                width="60"
+                height="40"
+                className="d-inline align-top"
+                alt="React Bootstrap logo"
+              />
+              MOI
+            </Navbar.Brand>
             <Nav className="ml-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="results">Zoekprofiel</Nav.Link>

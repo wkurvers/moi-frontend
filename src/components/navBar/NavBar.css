@@ -22,8 +22,14 @@
   padding: 0px;
   font-weight: 700;
   font-size: 32px;
+  font-family: "Raleway", sans-serif;
+
   /*margin-left: 500%;*/
   /*margin-right: 5%;*/
+}
+
+a:hover {
+  color: #cccccc !important;
 }
 
 #avatar {
