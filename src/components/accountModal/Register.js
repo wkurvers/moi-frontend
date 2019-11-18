@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import {Input, Typography, Divider} from 'antd';
 import {connect} from 'react-redux';
-import {registerUser} from "../../actions/registrationActions";
+import {registerUser,resetResponse} from "../../actions/registrationActions";
 import "./AccountModal.css"
 
 const { Title } = Typography;
-
 
 class Register extends Component {
 
@@ -16,15 +15,50 @@ class Register extends Component {
       firstPassword: "",
       secondPassword: "",
 
-
       emailError: false,
       firstPasswordError: false,
       secondPasswordError: false,
-      errorMessage: ""
+      errorMessage: "",
     }
     this.handleChange = this.handleChange.bind(this);
     this.keyPress = this.keyPress.bind(this);
+  }
 
+  componentDidUpdate() {
+    if(this.props.response.status) {
+      if(this.props.response.status === 201) {
+        this.resetResponse()
+        this.resetError()
+        this.props.setActiveComponent("Login")
+      }else if(this.props.response.status === 406) {
+        this.resetResponse()
+        this.handleError("Je inloggegevens zijn onjuist")
+      } else if(this.props.response.status === 409) {
+        this.resetResponse()
+        this.handleError("Deze e-mail is al bij ons in gebruik")
+      } else {
+        this.resetResponse()
+        this.handleError("Er is iets fout gegaan")
+      }
+    }
+  }
+
+  resetResponse() {
+    this.props.resetResponse()
+  }
+
+  handleError(msg) {
+    this.setState({
+      "emailError": true,
+      "errorMessage": msg
+    })
+  }
+
+  resetError() {
+    this.setState({
+      "emailError": false,
+      "errorMessage": ""
+    })
   }
 
   handleChange(event) {
@@ -90,7 +124,7 @@ class Register extends Component {
       emailError: false,
       firstPasswordError: false,
       secondPasswordError: false,
-      errorMessage: ""
+      errorMessage: "",
     });
   }
 
@@ -103,21 +137,7 @@ class Register extends Component {
       "email": this.state.email,
       "password": this.state.firstPassword
     }
-    //------------TEST---------------//
-    fetch('http://localhost:8000/api/register/', {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(userData)
-    })
-      .then(res => res.json())
-      .then(data => {
-        if(data != 401) {
-          this.props.setActiveComponent("Login")
-        }
-      })
-    //-------------------------------//
+    this.props.registerUser(userData)
   }
 
   keyPress(e){
@@ -169,7 +189,7 @@ class Register extends Component {
 
           {(this.state.emailError || this.state.firstPasswordError || this.state.secondPasswordError) && (
               <div className={"error-container"}>
-                <text className={"error-text"}>{this.state.errorMessage}</text>
+                <div className={"error-text"}>{this.state.errorMessage}</div>
               </div>
           )}
 
@@ -195,5 +215,7 @@ class Register extends Component {
     );
   }
 }
-
-export default Register;
+const mapStateToProps = state =>  ({
+    response: state.register.item
+});
+export default connect(mapStateToProps,{registerUser,resetResponse})(Register);

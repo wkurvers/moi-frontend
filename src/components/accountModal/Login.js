@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Input, Typography} from 'antd';
-import "./AccountModal.css"
+import "./AccountModal.css";
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 const { Title } = Typography;
 
@@ -62,6 +63,37 @@ class Login extends Component {
   login() {
     this.clearErrors();
     this.validateFields();
+    let userData = {
+      "username": this.state.email,
+      "password": this.state.password
+    }
+    //------------TEST---------------//
+    fetch('http://localhost:8000/api/token/', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+    })
+      .then(res => {
+        if(res.status == 200) {
+          return res.json()
+        } else {
+          this.setState({emailError: true, passwordError: true, errorMessage: "Inloggegevens zijn onjuist"})
+        }
+      })
+      .then(data => {
+        console.log(data)
+        if(data != undefined) {
+          this.setState({emailError: false, errorMessage: ""})
+          reactLocalStorage.set("authAccessToken", data.access);
+
+          reactLocalStorage.set("authRefreshToken", data.refresh);
+          this.props.setActiveComponent("LoggedIn")
+        }
+        
+      })
+    //-------------------------------//
   }
 
   keyPress(e){
@@ -106,7 +138,7 @@ class Login extends Component {
           </div>
           {(this.state.emailError || this.state.passwordError) && (
               <div className={"error-container"}>
-                <text className={"error-text"}>{this.state.errorMessage}</text>
+                <div className={"error-text"}>{this.state.errorMessage}</div>
               </div>
           )}
           <div className={"button-container button-margin-top"}>

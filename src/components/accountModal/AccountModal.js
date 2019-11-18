@@ -6,17 +6,22 @@ import Register from "./Register";
 import BeginScreen from "./BeginScreen";
 import PasswordForgot from "./PasswordForgot";
 import PasswordChange from "./PasswordChange";
+import LoggedIn from "./LoggedIn";
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 
 class AccountModal extends Component {
 
   constructor(props) {
+    let token = reactLocalStorage.get("authAccessToken");
+
     super(props);
     this.state = {
       visible: false,
-      activeComponent: "BeginScreen",
+      activeComponent: token === null ? "BeginScreen" : "LoggedIn",
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
     this.setActiveComponent = this.setActiveComponent.bind(this);
 
   }
@@ -30,7 +35,6 @@ class AccountModal extends Component {
   handleCancel = e => {
     this.setState({
       visible: false,
-      activeComponent: "BeginScreen"
     });
   };
 
@@ -51,6 +55,8 @@ class AccountModal extends Component {
         return "Wachtwoord vergeten";
       case "PasswordChange":
         return "Wachtwoord veranderen";
+      case "LoggedIn":
+        return "Mijn account";
     }
   }
 
@@ -65,13 +71,15 @@ class AccountModal extends Component {
       case "BeginScreen":
         return <BeginScreen setActiveComponent={this.setActiveComponent} />;
       case "Login":
-        return <Login setActiveComponent={this.setActiveComponent} />;
+        return <Login setActiveComponent={this.setActiveComponent}/>;
       case "Register":
         return <Register setActiveComponent={this.setActiveComponent} />;
       case "PasswordForgot":
         return <PasswordForgot setActiveComponent={this.setActiveComponent} />
       case "PasswordChange":
         return <PasswordChange setActiveComponent={this.setActiveComponent} />
+      case "LoggedIn":
+        return <LoggedIn setActiveComponent={this.setActiveComponent} closeModal={this.handleCancel} />
     }
   }
 
