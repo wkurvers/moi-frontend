@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Modal, Button, Input } from "antd";
 import "./Home.css";
 import Header from "../../components/header/Header";
-import {registerUser} from "../../actions/registrationActions";
+import LocationModal from  "../../components/locationModal/LocationModal.js"
 
 class Home extends Component {
   constructor(props) {
@@ -12,20 +10,30 @@ class Home extends Component {
       visible: false,
       showLogin: false,
       showRegistration: false
-    }
+    };
 
-    this.accountModal = React.createRef()
+    this.locationModal = React.createRef()
   }
 
   componentDidMount() {
 
   }
 
+  showModal = () => {
+    this.locationModal.current.showModal();
+  };
+
 
   render() {
     return (
       <div>
         <Header />
+        <LocationModal ref={this.locationModal}/>
+        <div className={"home-region-button-container"}>
+          <div className={"home-region-button"} onClick={this.showModal} >
+            Kies regio
+          </div>
+        </div>
       </div>
     );
   }

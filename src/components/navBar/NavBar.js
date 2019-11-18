@@ -9,7 +9,6 @@ class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: false,
     };
 
     this.accountModal = React.createRef()

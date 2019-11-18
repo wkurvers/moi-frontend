@@ -1,0 +1,29 @@
+.home-region-button-container {
+    padding: 100px;
+}
+
+
+.home-region-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 40px;
+    border-radius: 50px;
+    border-width: 2px;
+    border-color: #1B6989;
+    border-style: solid;
+
+    background-color: #fff;
+    color: #1B6989;
+    padding: 14px 28px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+}
+
+.home-region-button:hover {
+    background-color: black;
+    color: #fff !important;
+}
