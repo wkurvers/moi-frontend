@@ -1,0 +1,67 @@
+.footer {
+  width: 100vw;
+  height: 40vh;
+  background-color: #006989;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.footer-title {
+  color: white;
+  font-size: 36px;
+  margin: 0 !important;
+  line-height: 55px;
+  position: relative;
+  text-align: center;
+
+  z-index: 1;
+}
+
+.footer-subtitle {
+  color: white;
+  font-size: 18px;
+  width: 75%;
+  position: relative;
+  margin: 0 !important;
+  text-align: center;
+  z-index: 1;
+}
+
+.footer-title-container {
+  width: 100vw;
+  padding-left: 17vw;
+  padding-right: 17vw;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-column-title {
+  font-size: 20px;
+  font-weight: 700 !important;
+  color: white;
+  text-align: center;
+  margin: 0px;
+}
+
+.footer-column-subtitle {
+  margin: 0px;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+}
+
+.footer-image {
+  position: absolute;
+  width: 100vw;
+  height: 40vh;
+  opacity: 15%;
+  background-image: url("../../assets/connected_dots.png");
+  background-size: cover;
+  background-position: center;
+}
