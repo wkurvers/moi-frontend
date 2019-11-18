@@ -1,4 +1,4 @@
-import {REGISTRATION} from "../actions/types";
+import {REGISTRATION, RESET_REGISTRATION_RESPONSE} from "../actions/types";
 
 const initialState = {
     item: {},
@@ -11,6 +11,11 @@ export default function (state = initialState, action) {
                 ...state,
                 item: action.payload,
             };
+        case RESET_REGISTRATION_RESPONSE:
+            return {
+                ...state,
+                item: {},
+            }
         default:
             return state;
     }
