@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Input, Typography} from 'antd';
 import "./AccountModal.css";
 import {reactLocalStorage} from 'reactjs-localstorage';
+import {loginUser,resetResponse} from "../../actions/loginActions";
+import {connect} from 'react-redux';
 
 const { Title } = Typography;
 
@@ -20,6 +22,43 @@ class Login extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.keyPress = this.keyPress.bind(this);
+  }
+
+  componentDidUpdate() {
+    if(this.props.response.status) {
+      if(this.props.response.status === 200) {
+        //TODO use redux???
+        reactLocalStorage.set("authAccessToken", this.props.response.access);
+        reactLocalStorage.set("authRefreshToken", this.props.response.refresh);
+        //--------
+        this.props.setActiveComponent("LoggedIn")
+        this.resetResponse()
+      } else if(this.props.response.status === 401) {
+        this.resetResponse()
+        this.handleError("Je inloggegevens zijn onjuist")
+      } else {
+        this.resetResponse()
+        this.handleError("Er is iets fout gegaan")
+      }
+    }
+  }
+
+  resetResponse() {
+    this.props.resetResponse()
+  }
+
+  handleError(msg) {
+    this.setState({
+      "emailError": true,
+      "errorMessage": msg
+    })
+  }
+
+  resetError() {
+    this.setState({
+      "emailError": false,
+      "errorMessage": ""
+    })
   }
 
   handleChange(event) {
@@ -67,33 +106,7 @@ class Login extends Component {
       "username": this.state.email,
       "password": this.state.password
     }
-    //------------TEST---------------//
-    fetch('http://localhost:8000/api/token/', {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(userData)
-    })
-      .then(res => {
-        if(res.status == 200) {
-          return res.json()
-        } else {
-          this.setState({emailError: true, passwordError: true, errorMessage: "Inloggegevens zijn onjuist"})
-        }
-      })
-      .then(data => {
-        console.log(data)
-        if(data != undefined) {
-          this.setState({emailError: false, errorMessage: ""})
-          reactLocalStorage.set("authAccessToken", data.access);
-
-          reactLocalStorage.set("authRefreshToken", data.refresh);
-          this.props.setActiveComponent("LoggedIn")
-        }
-        
-      })
-    //-------------------------------//
+    this.props.loginUser(userData)
   }
 
   keyPress(e){
@@ -134,7 +147,7 @@ class Login extends Component {
 
 
           <div className={"password-forgot-container"}>
-            <text className={"text-link"} onClick={() => this.props.setActiveComponent("PasswordForgot")}>{"Wachtwoord vergeten?"}</text>
+            <div className={"text-link"} onClick={() => this.props.setActiveComponent("PasswordForgot")}>{"Wachtwoord vergeten?"}</div>
           </div>
           {(this.state.emailError || this.state.passwordError) && (
               <div className={"error-container"}>
@@ -148,12 +161,14 @@ class Login extends Component {
           </div>
 
           <div className={"back-container"}>
-            <text className={"text-link"} onClick={() => this.props.setActiveComponent("BeginScreen")}>{"Terug"}</text>
+            <div className={"text-link"} onClick={() => this.props.setActiveComponent("BeginScreen")}>{"Terug"}</div>
           </div>
 
         </div>
     );
   }
 }
-
-export default Login;
+const mapStateToProps = state =>  ({
+    response: state.login.item
+});
+export default connect(mapStateToProps,{loginUser,resetResponse})(Login);

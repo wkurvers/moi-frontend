@@ -14,10 +14,10 @@ class AccountModal extends Component {
 
   constructor(props) {
     let token = reactLocalStorage.get("authAccessToken");
-
     super(props);
     this.state = {
       visible: false,
+      changed: false,
       activeComponent: token === null ? "BeginScreen" : "LoggedIn",
     };
     this.handleChange = this.handleChange.bind(this);
@@ -27,8 +27,10 @@ class AccountModal extends Component {
   }
 
   showModal() {
+    let token = reactLocalStorage.get("authAccessToken");
     this.setState({
       visible: true,
+      activeComponent: token === undefined ? "BeginScreen" : "LoggedIn",
     });
   };
 
