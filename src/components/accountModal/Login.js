@@ -50,6 +50,7 @@ class Login extends Component {
   handleError(msg) {
     this.setState({
       "emailError": true,
+      "passwordError": true,
       "errorMessage": msg
     })
   }
@@ -57,6 +58,7 @@ class Login extends Component {
   resetError() {
     this.setState({
       "emailError": false,
+      "passwordError": false, 
       "errorMessage": ""
     })
   }
