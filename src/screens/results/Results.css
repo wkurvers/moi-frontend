@@ -1,5 +1,5 @@
 .topImageContainer {
-    height: 13em;
+    height: 15em;
     line-height: 12em;
     text-align: center;
     background-color: #eaebed;
@@ -7,10 +7,18 @@
     overflow: hidden;
 }
 
+#topImage {
+    width: 100%;
+    height: 65em;
+    object-fit: cover;
+    z-index: -1;
+}
+
 #numberOfResults {
     display: inline-block;
     vertical-align: middle;
     line-height: normal;
+    z-index: 1;
 }
 
 .thumbnail-image {
@@ -63,7 +71,8 @@
 .search {
     height: 5vh;
     width: 27vw;
-    margin-left: 2.3vw;
+    margin-left: -10.3vw;
+    margin-top: 2vh;
 }
 
 .ant-btn-primary {
@@ -164,7 +173,7 @@
 }
 
 .companyContainer {
-    border: 1px solid rgb(235, 235, 235);
+    border: 2px solid rgb(235, 235, 235);
     height: 13vh;
     width: 100%;
     margin: 10px;
@@ -206,4 +215,19 @@
 
 #myBtn:hover {
     background-color: #555; /* Add a dark-grey background on hover */
+}
+
+.ant-pagination {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5;
+    list-style: none;
+    font-feature-settings: 'tnum';
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+    margin-left: 10px;
 }

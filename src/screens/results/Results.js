@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {Breakpoint, BreakpointProvider} from 'react-socks';
 import ScrollMenuHorizontal from '../../components/scrollMenu/ScrollMenuHorizontal';
-import topImage from '../../assets/Screenshot_20191118_170408.png';
-import {Icon, Modal, Input, Slider, InputNumber} from 'antd';
+import topImage from '../../assets/vector-abstract-modern-polygonal-geometric-background.jpg';
+import {Icon, Modal, Input, Slider, InputNumber, Pagination} from 'antd';
 import './Results.css';
 import {Container, Row, Col} from 'react-bootstrap';
 import Image from "react-bootstrap/Image";
+import {FETCH_USERS} from "../../actions/types";
 
 class Results extends Component {
 
@@ -18,6 +19,7 @@ class Results extends Component {
             disabled: false,
             numEmployees: 1,
             ISB: 0,
+            data: {"page_size":10,"page_number":1,"sort_column":"bedrijfsnaam","sort_direction":"asc","records_filtered":115,"records_total":115,"results":[{"ID":"3209063","Bedrijfsnaam":"3 Times Impact B.V.","Handelsnamen":["3 Times Impact B.V."],"Thema's":{"im_proef_lsh":"Life Sciences en Health"},"Netwerkactiviteiten":{"ref_award_mkbtop100-2018":"MKB Innovatie Top 100 (2018)"},"Websites":["3timesimpact.nl"],"Adres":"Eerste Kostverlorenkade 73","Postcode":"1052 EL","Plaats":"Amsterdam","Gemeente":"Amsterdam","Provincie":"Noord-Holland","Werknemers":"Cat. 00: Onbekend","Jaar":2016,"Rechtsvorm":"B.V.","BAG":"woonfunctie","SBI Code":"6201","SBI Hoofdactiviteit":"Ontwikkelen, produceren en uitgeven van software","KvK-Nummer":"67045316"},{"ID":"2678774","Bedrijfsnaam":"A-Fiber Speedlink C.V.","Handelsnamen":["A-Fiber Speedlink C.V.","A-Fiber","Iris","Iris Networks","AFIBER"],"Thema's":{"im_proef_ict":"ICT"},"Netwerkactiviteiten":{"ref_platform_amsterdam-smart-city":"Amsterdam Smart City"},"Websites":["www.afiber.net"],"Adres":"Herenweg 115","Postcode":"2105 MG","Plaats":"Heemstede","Gemeente":"Heemstede","Provincie":"Noord-Holland","Werknemers":"Cat. 00: Onbekend","Jaar":2015,"Rechtsvorm":"C.V.","BAG":"overige gebruiksfunctie","SBI Code":"6110","SBI Hoofdactiviteit":"Draadgebonden telecommunicatie","KvK-Nummer":"64350649"},{"ID":"3051735","Bedrijfsnaam":"AntTail Holding B.V.","Handelsnamen":["AntTail Holding B.V."],"Thema's":{"im_proef_ict":"ICT","im_proef_lsh":"Life Sciences en Health"},"Netwerkactiviteiten":[],"Websites":["anttail.com"],"Adres":"Computerweg 22","Postcode":"3542 DR","Plaats":"Utrecht","Gemeente":"Utrecht","Provincie":"Utrecht","Werknemers":"Cat. 01: 1 - 1","Jaar":2014,"Rechtsvorm":"B.V.","BAG":"industriefunctie","SBI Code":"6420","SBI Hoofdactiviteit":"Financiele holdings","KvK-Nummer":"60621044"},{"ID":"2262531","Bedrijfsnaam":"AntTail.com B.V.","Handelsnamen":["AntTail.com B.V."],"Thema's":{"im_proef_ict":"ICT","im_proef_lsh":"Life Sciences en Health"},"Netwerkactiviteiten":[],"Websites":["anttail.com"],"Adres":"Computerweg 22","Postcode":"3542 DR","Plaats":"Utrecht","Gemeente":"Utrecht","Provincie":"Utrecht","Werknemers":"Cat. 01: 1 - 1","Jaar":2015,"Rechtsvorm":"B.V.","BAG":"industriefunctie","SBI Code":"6201","SBI Hoofdactiviteit":"Ontwikkelen, produceren en uitgeven van software","KvK-Nummer":"62648764"},{"ID":"1897389","Bedrijfsnaam":"AppsForAgri B.V.","Handelsnamen":["AppsForAgri B.V.","Boerenappstore"],"Thema's":{"im_proef_agrifood":"AgriFood","im_proef_ict":"ICT"},"Netwerkactiviteiten":[],"Websites":["www.appsforagri.com"],"Adres":"Stadhuisplein 345a","Postcode":"5038 TH","Plaats":"Tilburg","Gemeente":"Tilburg","Provincie":"Noord-Brabant","Werknemers":"Cat. 00: Onbekend","Jaar":2013,"Rechtsvorm":"B.V.","BAG":"kantoorfunctie","SBI Code":"6201","SBI Hoofdactiviteit":"Ontwikkelen, produceren en uitgeven van software","KvK-Nummer":"58299238"},{"ID":"10785","Bedrijfsnaam":"Bfactory Health Products B.V.","Handelsnamen":["Bfactory Health Products B.V.","Bfactory","Dermagiq","Vetramil","Revamil"],"Thema's":{"im_proef_lsh":"Life Sciences en Health"},"Netwerkactiviteiten":{"ref_leden_wageningen-university-research-spin-offs":"Wageningen University & Research Spin-offs"},"Websites":["www.bfactory.nl"],"Adres":"Remmerden 58","Postcode":"3911 TZ","Plaats":"Rhenen","Gemeente":"Rhenen","Provincie":"Utrecht","Werknemers":"Cat. 02: 2 - 4","Jaar":2008,"Rechtsvorm":"B.V.","BAG":"industriefunctie","SBI Code":"2042","SBI Hoofdactiviteit":"Vervaardiging van parfums en cosmetica","KvK-Nummer":"09182442"},{"ID":"3275677","Bedrijfsnaam":"Bfactory International B.V.","Handelsnamen":["Bfactory International B.V."],"Thema's":{"im_proef_lsh":"Life Sciences en Health"},"Netwerkactiviteiten":{"ref_leden_wageningen-university-research-spin-offs":"Wageningen University & Research Spin-offs"},"Websites":["www.bfactory.nl"],"Adres":"Remmerden 58","Postcode":"3911 TZ","Plaats":"Rhenen","Gemeente":"Rhenen","Provincie":"Utrecht","Werknemers":"Cat. 00: Onbekend","Jaar":2016,"Rechtsvorm":"B.V.","BAG":"industriefunctie","SBI Code":"2042","SBI Hoofdactiviteit":"Vervaardiging van parfums en cosmetica","KvK-Nummer":"67089275"},{"ID":"575731","Bedrijfsnaam":"BLAUD B.V.","Handelsnamen":["BLAUD B.V.","Blaud"],"Thema's":{"im_proef_ict":"ICT"},"Netwerkactiviteiten":{"ref_award_mkbtop100-2018":"MKB Innovatie Top 100 (2018)"},"Websites":["blaud.com"],"Adres":"Duwboot 20","Postcode":"3991 CD","Plaats":"Houten","Gemeente":"Houten","Provincie":"Utrecht","Werknemers":"Cat. 03: 5 - 9","Jaar":2007,"Rechtsvorm":"B.V.","BAG":"kantoorfunctie","SBI Code":"6201","SBI Hoofdactiviteit":"Ontwikkelen, produceren en uitgeven van software","KvK-Nummer":"30221540"},{"ID":"2312918","Bedrijfsnaam":"Cerescon B.V.","Handelsnamen":["Cerescon B.V."],"Thema's":{"im_proef_agrifood":"AgriFood","im_proef_htsm":"HTSM"},"Netwerkactiviteiten":{"ref_award_accenture-2017":"award accenture 2017","ref_platform_ges2019":"Ges2019","ref_platform_holland-robotics":"Holland Robotics","ref_award_mkbtop100-2018":"MKB Innovatie Top 100 (2018)","ref_award_accenture-2017_winnaar":"Winnaar van de Accenture Innovation Award 2017"},"Websites":["www.cerescon.com"],"Adres":"de Geestakkers 5","Postcode":"5591 RC","Plaats":"Heeze","Gemeente":"Heeze-Leende","Provincie":"Noord-Brabant","Werknemers":"Cat. 00: Onbekend","Jaar":2014,"Rechtsvorm":"B.V.","BAG":"industriefunctie","SBI Code":"72111","SBI Hoofdactiviteit":"Biotechnologisch speur- en ontwikkelingswerk op het gebied van agrarische producten en processen","KvK-Nummer":"62067338"},{"ID":"2174106","Bedrijfsnaam":"Cerescon Holding B.V.","Handelsnamen":["Cerescon Holding B.V."],"Thema's":{"im_proef_agrifood":"AgriFood","im_proef_htsm":"HTSM"},"Netwerkactiviteiten":{"ref_award_accenture-2017":"award accenture 2017","ref_platform_ges2019":"Ges2019","ref_platform_holland-robotics":"Holland Robotics","ref_award_mkbtop100-2018":"MKB Innovatie Top 100 (2018)","ref_award_accenture-2017_winnaar":"Winnaar van de Accenture Innovation Award 2017"},"Websites":["www.cerescon.com"],"Adres":"Haagdoorn 3","Postcode":"5666 BW","Plaats":"Geldrop","Gemeente":"Geldrop-Mierlo","Provincie":"Noord-Brabant","Werknemers":"Cat. 00: Onbekend","Jaar":2014,"Rechtsvorm":"B.V.","BAG":"woonfunctie","SBI Code":"7112","SBI Hoofdactiviteit":"Ingenieurs en overig technisch ontwerp en advies","KvK-Nummer":"61983861"}],"error":false,"statusCode":200,"message":"OK"},
         };
         window.onscroll =() => {this.scrollFunction()};
     }
@@ -74,11 +76,22 @@ class Results extends Component {
         }
     }
 
+    temp() {
+        const companyItems = this.state.data.results(company => (
+            <div key={company.ID}>
+                <h3>{company.Bedrijfsnaam}</h3>
+            </div>
+        ));
+        return companyItems;
+    }
+
 
     render() {
 
         const {Search} = Input;
         const { disabled, numEmployees } = this.state;
+
+        const companyItems = this.state.data.results;
 
         return (
             <BreakpointProvider>
@@ -108,8 +121,8 @@ class Results extends Component {
                 <Breakpoint medium up>
                     <div>
                         <div className={'topImageContainer'}>
-                            {/*<Image src={topImage} fluid={true} />*/}
-                            <h1 id={'numberOfResults'}>700 Resultaten</h1>
+                            {/*<h1 id={'numberOfResults'}>700 Resultaten</h1>*/}
+                            <img id={'topImage'} src={topImage} />
                         </div>
 
                         <div className={'categoriesContainer'}>
@@ -161,57 +174,46 @@ class Results extends Component {
 
                                     <Col className={'resultsContainer'} md={8}>
                                         <div className={'companyContainer'}>
-
+                                            {this.state.data.results[0].Bedrijfsnaam}
                                         </div>
 
                                         <div className={'companyContainer'}>
-
+                                            {this.state.data.results[1].Bedrijfsnaam}
                                         </div>
 
                                         <div className={'companyContainer'}>
-
+                                            {this.state.data.results[2].Bedrijfsnaam}
                                         </div>
 
                                         <div className={'companyContainer'}>
-
+                                            {this.state.data.results[3].Bedrijfsnaam}
                                         </div>
 
                                         <div className={'companyContainer'}>
-
+                                            {this.state.data.results[4].Bedrijfsnaam}
                                         </div>
 
                                         <div className={'companyContainer'}>
-
+                                            {this.state.data.results[5].Bedrijfsnaam}
                                         </div>
 
                                         <div className={'companyContainer'}>
-
+                                            {this.state.data.results[6].Bedrijfsnaam}
                                         </div>
 
                                         <div className={'companyContainer'}>
-
+                                            {this.state.data.results[7].Bedrijfsnaam}
                                         </div>
 
                                         <div className={'companyContainer'}>
-
+                                            {this.state.data.results[8].Bedrijfsnaam}
                                         </div>
 
                                         <div className={'companyContainer'}>
-
+                                            {this.state.data.results[9].Bedrijfsnaam}
                                         </div>
 
-                                        <div className={'companyContainer'}>
-
-                                        </div>
-
-                                        <div className={'companyContainer'}>
-
-                                        </div>
-
-                                        <div className={'companyContainer'}>
-
-                                        </div>
-
+                                        <Pagination id={'pagination'} defaultCurrent={6} total={500}/>
                                     </Col>
                                 </Row>
                             </Container>
