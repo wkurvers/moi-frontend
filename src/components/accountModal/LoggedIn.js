@@ -11,10 +11,9 @@ class LoggedIn extends Component {
   }
 
   logout() {
-    reactLocalStorage.clear();
+    reactLocalStorage.clear()
     this.props.setActiveComponent("BeginScreen")
   }
-
 
   render() {
     return (
