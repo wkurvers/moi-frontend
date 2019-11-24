@@ -1,7 +1,7 @@
 #searchbar {
   background: #ffffff;
   border-radius: 35px;
-  width: 40vw;
+  width: 90vw;
   height: 52px;
   padding-left: 15px;
   padding-right: 15px;
@@ -42,4 +42,23 @@
 
 #searchbar-button-icon {
   fill: red;
+}
+
+@media (min-width: 992px) {
+  #searchbar {
+    background: #ffffff;
+    border-radius: 35px;
+    width: 40vw;
+    height: 52px;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    align-items: center;
+    font-family: "Raleway", sans-serif;
+    font-weight: normal;
+    font-size: 16px;
+    margin-top: 45px;
+    position: relative;
+    z-index: 1;
+  }
 }
