@@ -2,7 +2,7 @@
   /* background: #006989; */
   /* box-shadow: 0 2px 50px 15px rgba(153, 153, 153, 0.5); */
 
-  width: 100vw;
+  width: 100%;
   height: 60vh;
   background-repeat: no-repeat;
   background-size: contain;
@@ -18,11 +18,19 @@
 
 .header-title {
   color: white;
-  font-size: 48px;
   margin: 0 !important;
   line-height: 55px;
   position: relative;
   z-index: 1;
+}
+
+.header-title-bold {
+  color: white;
+  margin: 0 !important;
+  line-height: 55px;
+  position: relative;
+  z-index: 1;
+  font-weight: 400 !important;
 }
 
 .header-subtitle {
