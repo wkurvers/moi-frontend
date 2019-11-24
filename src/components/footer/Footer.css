@@ -5,13 +5,14 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding-top: 5vw;
+  padding-bottom: 5vw;
 }
 
 .footer-title {
   color: white;
-  font-size: 5vh;
+  font-size: 36px;
   margin: 0 !important;
-  line-height: 55px;
   position: relative;
   text-align: center;
 
@@ -20,7 +21,7 @@
 
 .footer-subtitle {
   color: white;
-  font-size: 3vh;
+  font-size: 20px;
   width: 90%;
   position: relative;
   margin: 0 !important;
@@ -79,6 +80,28 @@
     color: white;
     font-size: 18px;
     width: 75%;
+    position: relative;
+    margin: 0 !important;
+    text-align: center;
+    z-index: 1;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-title {
+    color: white;
+    font-size: 30px;
+    margin: 0 !important;
+    position: relative;
+    text-align: center;
+
+    z-index: 1;
+  }
+
+  .footer-subtitle {
+    color: white;
+    font-size: 16px;
+    width: 90%;
     position: relative;
     margin: 0 !important;
     text-align: center;

@@ -21,7 +21,7 @@
 }
 
 .header-title {
-  font-size: 5vh;
+  font-size: 48px;
 
   color: white;
   margin: 0 !important;
@@ -30,7 +30,7 @@
 }
 
 .header-title-bold {
-  font-size: 5vh;
+  font-size: 48px;
   color: white;
   margin: 0 !important;
   position: relative;
@@ -40,7 +40,7 @@
 
 .header-subtitle {
   color: white;
-  font-size: 3vh;
+  font-size: 24px;
   position: relative;
   z-index: 1;
 }
@@ -72,5 +72,32 @@
 
   .header-title-bold .header-title {
     line-height: 45px;
+  }
+}
+
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 32px;
+
+    color: white;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-title-bold {
+    font-size: 32px;
+    color: white;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+    font-weight: 400 !important;
+  }
+
+  .header-subtitle {
+    color: white;
+    font-size: 18px;
+    position: relative;
+    z-index: 1;
   }
 }
