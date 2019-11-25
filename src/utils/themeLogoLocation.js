@@ -1,0 +1,15 @@
+module.exports = {
+    agrifood		: require("../assets/256px_agrifood.png"),
+    circulaire_economie	: require("../assets/256px_circulaire_economy.png"),
+    htsm		: require("../assets/256px_htsm.png"),
+    lsh			: require("../assets/256px_lsh.png"),
+    water		: require("../assets/256px_water.png"),
+    bouw		: require("../assets/256px_bouw.png"),
+    creatieve_industrie	: require("../assets/256px_creatieve_industrie.png"),
+    ict			: require("../assets/256px_ict.png"),
+    other		: require("../assets/256px_other.png"),
+    chemie		: require("../assets/256px_chemie.png"),
+    energie		: require("../assets/256px_energie.png"),
+    logistiek		: require("../assets/256px_logistiek.png"),
+    tuinbouw		: require("../assets/256px_tuinbouw.png"),
+}
