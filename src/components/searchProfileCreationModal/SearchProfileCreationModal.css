@@ -37,6 +37,14 @@
     margin-top: 10px;
 }
 
+.text-slider-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    height: 200px;
+    justify-content: space-between;
+}
+
 .info-text {
     font-size: 18px;
     color: black;
@@ -51,4 +59,16 @@
 
 .theme-select-container {
     height: 150px;
+}
+
+.activity-select-container {
+    height: 150px;
+}
+
+.type-dropdown-menu {
+    cursor: pointer;
+}
+
+.number-slider {
+    margin-top: 50px;
 }

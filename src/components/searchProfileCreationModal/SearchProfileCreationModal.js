@@ -3,14 +3,19 @@ import {Modal, Steps} from 'antd';
 import "./SearchProfileCreationModal.css"
 import BeginScreen from "./BeginScreen";
 import ThemeScreen from "./ThemeScreen";
+import LocationScreen from "./LocationScreen";
+import TypeScreen from "./TypeScreen";
+import WorkersScreen from "./WorkersScreen";
+import StartYearScreen from "./StartYearScreen";
+import LawFormScreen from "./LawFormScreen";
 import Footer from "./Footer";
 const {Step} = Steps;
 const steps = [
 	{
-		title:"Thema's"
+		title:"Start"
 	},
 	{
-		title:"Activiteiten"
+		title:"Thema's"
 	},
 	{
 		title:"Locatie"
@@ -88,19 +93,19 @@ class SearchProfileCreationModal extends Component {
 			case 1:
 				return "Thema's";
 			case 2:
-				return "Activiteiten";
-			case 3:
 				return "Locatie";
-			case 4:
+			case 3:
 				return "Type";
-			case 5:
+			case 4:
 				return "Aantal werknemers";
-			case 6:
+			case 5:
 				return "Start jaar";
-			case 7:
+			case 6:
 				return "Rechtsvorm";
-			case 8:
+			case 7:
 				return "BAG";
+			default:
+				return "Zoekprofiel creëren";
 		};
 	};
 
@@ -116,6 +121,18 @@ class SearchProfileCreationModal extends Component {
 				return <BeginScreen/>;
 			case 1:
 				return <ThemeScreen/>;
+			case 2:
+				return <LocationScreen/>;
+			case 3:
+				return <TypeScreen/>;
+			case 4:
+				return <WorkersScreen/>;
+			case 5:
+				return <StartYearScreen/>;
+			case 6:
+				return <LawFormScreen/>;
+			default:
+				return <BeginScreen/>;
 		};
 	}
 

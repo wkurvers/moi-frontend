@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Icon, Button, Row, Col, Checkbox} from 'antd';
+import {Row, Col, Checkbox} from 'antd';
 import "./SearchProfileCreationModal.css"
 
 class ThemeScreen extends Component {
