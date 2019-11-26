@@ -10,13 +10,13 @@ export const loginUser = (loginData) => dispatch =>  {
     })
     .then(res => res.json()
     .then(data => {
-        data.status = res.status
+        data.status = res.status;
         dispatch({
             type: LOGIN,
             payload: data,
         })
     }).catch(data => {
-        data.status = res.status
+        data.status = res.status;
         dispatch({
             type: LOGIN,
             payload: data,
