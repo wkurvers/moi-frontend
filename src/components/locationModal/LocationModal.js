@@ -1,7 +1,6 @@
 import React, {Component, useState} from 'react';
 import {Input, Modal, Slider} from 'antd';
-import Map from "./Map";
-import MapTwo from "./MapTwo";
+import GeoMap from "./GeoMap";
 import "./LocationModal.css";
 
 
@@ -11,48 +10,18 @@ class LocationModal extends Component {
     super(props);
     this.state = {
       visible: false,
+      position: ["40.6710729", "-73.9988001" ],
       coords: {
         latitude: "40.6710729",
         longitude: "-73.9988001",
       },
       distance: 10,
-
-      // data: {
-      //   //id: 1,
-      //
-      //   // circle: {
-      //   //   radius: 3000,
-      //   //   options: {
-      //   //     strokeColor: "#ff0000"
-      //   //   }
-      //   // }
-      // }
-
+      zoom: 13
     };
     this.updateDistance = this.updateDistance.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
   }
 
-  setCoords = (position) => {
-    console.log(position);
-    this.setState({
-      coords: position.coords
-    })
-  }
-
-  onError(err) {
-    console.warn(err);
-  }
-
-  componentDidMount() {
-
-    let options = {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0
-    };
-    navigator.geolocation.getCurrentPosition(this.setCoords, this.onError, options)
-  }
 
   showModal() {
     this.setState({
@@ -71,13 +40,6 @@ class LocationModal extends Component {
   }
 
   render() {
-    const {coords} = this.state;
-    let circle = {
-      radius: 500 * this.state.distance,
-      options: {
-        strokeColor: "#01A7C2"
-      }
-    };
     return (
         <Modal
             title={"Kies uw regio"}
@@ -87,21 +49,10 @@ class LocationModal extends Component {
         >
 
           <div className={"map-wrapper"}>
-            <MapTwo
-                lat={coords.latitude}
-                lng={coords.longitude}
-                radius={ 500 * this.state.distance}
+            <GeoMap
+              distance={this.state.distance}
+              radius={ 500 * this.state.distance}
             />
-            {/*<Map*/}
-            {/*    center={{ lat: coords.latitude, lng: coords.longitude }}*/}
-            {/*    zoom={12}*/}
-            {/*    coords={coords}*/}
-            {/*    circle={circle}*/}
-            {/*    googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-FsfMSTBRL8SgxjYWp4EUn1_KCw9U_88"*/}
-            {/*    loadingElement={<div style={{ height: 400 }} />}*/}
-            {/*    containerElement={<div style={{ height: 400}} />}*/}
-            {/*    mapElement={<div style={{ height: 400 }} />}*/}
-            {/*/>*/}
           </div>
 
           <div className={"location-modal-slider-container"}>
