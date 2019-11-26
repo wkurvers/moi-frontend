@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Slider} from 'antd';
+import {connect} from 'react-redux';
+import {storeStartYear} from "../../actions/profileCreationActions";
 import "./SearchProfileCreationModal.css"
 
 class StartYearScreen extends Component {
@@ -10,6 +12,9 @@ class StartYearScreen extends Component {
     }
   }
 
+  onAfterChange(e) {
+    this.props.storeStartYear(e)
+  }
 
   render() {
     return (
@@ -24,5 +29,7 @@ class StartYearScreen extends Component {
     );
   }
 }
-
-export default StartYearScreen;
+const mapStateToProps = state =>  ({
+    storedStartYear: state.profile.startYear
+});
+export default connect(mapStateToProps,{storeStartYear})(StartYearScreen);

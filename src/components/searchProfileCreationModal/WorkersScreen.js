@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Slider} from 'antd';
+import {connect} from 'react-redux';
+import {storeWorkers} from "../../actions/profileCreationActions";
 import "./SearchProfileCreationModal.css"
 
 class WorkersScreen extends Component {
@@ -10,6 +12,9 @@ class WorkersScreen extends Component {
     }
   }
 
+  onAfterChange(e) {
+    this.props.storeWorkers(e)
+  }
 
   render() {
     return (
@@ -18,11 +23,14 @@ class WorkersScreen extends Component {
           <div className={"info-text"}>
             Geef het aantal werknemers dat het bedrijf mag hebben aan
           </div>
-          <Slider min={0} max={150} range tooltipVisible defaultValue={[0,150]}/>
+          <Slider min={0} max={150} range tooltipVisible defaultValue={[0,150]} onAfterChange={(e) => this.onAfterChange(e)}/>
         </div>
       </div>
     );
   }
 }
 
-export default WorkersScreen;
+const mapStateToProps = state =>  ({
+    storedWorkers: state.profile.workers
+});
+export default connect(mapStateToProps,{storeWorkers})(WorkersScreen);

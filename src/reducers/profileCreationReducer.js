@@ -1,9 +1,10 @@
-import {PROFILE_STORE_THEMES,PROFILE_STORE_LOCATION,PROFILE_STORE_TYPE} from "../actions/types";
+import {PROFILE_STORE_THEMES,PROFILE_STORE_LOCATION,PROFILE_STORE_TYPE,PROFILE_STORE_WOKRERS,PROFILE_STORE_STARTYEAR} from "../actions/types";
 
 const initialState = {
     themes: [],
     location: {},
     types: [],
+    workers: []
 };
 
 export default function (state = initialState, action) {
@@ -22,7 +23,17 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 types: action.payload
-            }
+            };
+        case PROFILE_STORE_WOKRERS:
+            return {
+                ...state,
+                workers: action.payload
+            };
+        case PROFILE_STORE_STARTYEAR:
+            return {
+                ...state,
+                startYear: action.payload
+            };
         default:
             return state;
     }
