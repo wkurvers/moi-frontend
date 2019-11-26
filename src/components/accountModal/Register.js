@@ -32,7 +32,7 @@ class Register extends Component {
         this.props.setActiveComponent("Login")
       }else if(this.props.response.status === 406) {
         this.resetResponse()
-        this.handleError("Je inloggegevens zijn onjuist")
+        this.handleError("Je registratiegegevens zijn onjuist")
       } else if(this.props.response.status === 409) {
         this.resetResponse()
         this.handleError("Deze e-mail is al bij ons in gebruik")

@@ -1,17 +1,19 @@
-const CATEGORY1 = 'CATEGORY1' ;
-const CATEGORY2 = 'CATEGORY2' ;
-const CATEGORY3 = 'CATEGORY3' ;
-const CATEGORY4 = 'CATEGORY4' ;
-const CATEGORY5 = 'CATEGORY5' ;
-const CATEGORY6 = 'CATEGORY6' ;
-const CATEGORY7 = 'CATEGORY7' ;
-const CATEGORY8 = 'CATEGORY8' ;
-const CATEGORY9 = 'CATEGORY9' ;
-const CATEGORY10 = 'CATEGORY10';
-const CATEGORY11 = 'CATEGORY11';
-const CATEGORY12 = 'CATEGORY12';
+const CATEGORY1 = 'AgriFood' ;
+const CATEGORY2 = 'Bouw' ;
+const CATEGORY3 = 'Chemie' ;
+const CATEGORY4 = 'Circulaire Economie' ;
+const CATEGORY5 = 'Creatieve Industrie' ;
+const CATEGORY6 = 'Energie' ;
+const CATEGORY7 = 'HTSM' ;
+const CATEGORY8 = 'ICT' ;
+const CATEGORY9 = 'Life Sciences en Health' ;
+const CATEGORY10 = 'Logistiek';
+const CATEGORY11 = 'Social Impact';
+const CATEGORY12 = 'Tuinbouw';
+const CATEGORY13 = 'Water';
 
-export const categories = [CATEGORY1,
+export const categories =
+    [CATEGORY1,
     CATEGORY2,
     CATEGORY3,
     CATEGORY4,
@@ -22,4 +24,5 @@ export const categories = [CATEGORY1,
     CATEGORY9,
     CATEGORY10,
     CATEGORY11,
-    CATEGORY12];
+    CATEGORY12,
+    CATEGORY13];

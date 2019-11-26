@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 // eslint-disable-next-line react/prop-types
 const MenuItem = ({text, selected}) => {
-    return <div className={`menu-item ${selected ? 'active' : ''}`}>{text}</div>;
+    return <div className={`menu-item2 ${selected ? 'active' : ''}`}>{text}</div>;
 };
 
 export const Menu = (list, selected) =>
