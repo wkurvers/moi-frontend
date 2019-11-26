@@ -28,20 +28,18 @@
 }
 
 #searchbar-button {
-  display: inline-block;
+  cursor: pointer;
   border-radius: 50%;
   width: 36px;
+  min-width: 36px;
   height: 36px;
+  min-height: 36px;
+
   text-align: center;
   background: #f99c3f;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-#searchbar-button-icon {
-  fill: red;
 }
 
 @media (min-width: 992px) {
