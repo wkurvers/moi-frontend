@@ -1,3 +1,6 @@
-.nearby {
-  height: 90vh;
+@media (min-width: 992px) {
+  .companynearby-container {
+    margin-left: 17vw;
+    margin-right: 17vw;
+  }
 }
