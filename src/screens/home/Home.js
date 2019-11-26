@@ -3,7 +3,9 @@ import { connect } from "react-redux";
 import { Modal, Button, Input } from "antd";
 import "./Home.css";
 import Header from "../../components/header/Header";
-import {registerUser} from "../../actions/registrationActions";
+import Footer from "../../components/footer/Footer";
+import CompanyNearby from "../../components/companyNearby/CompanyNearby";
+import { registerUser } from "../../actions/registrationActions";
 
 class Home extends Component {
   constructor(props) {
@@ -12,20 +14,19 @@ class Home extends Component {
       visible: false,
       showLogin: false,
       showRegistration: false
-    }
+    };
 
-    this.accountModal = React.createRef()
+    this.accountModal = React.createRef();
   }
 
-  componentDidMount() {
-
-  }
-
+  componentDidMount() {}
 
   render() {
     return (
       <div>
         <Header />
+        <CompanyNearby />
+        <Footer />
       </div>
     );
   }
