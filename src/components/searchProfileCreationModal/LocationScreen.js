@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {storeLocation} from "../../actions/profileCreationActions";
 import "./SearchProfileCreationModal.css"
 
 class LocationScreen extends Component {
@@ -23,4 +25,7 @@ class LocationScreen extends Component {
   }
 }
 
-export default LocationScreen;
+const mapStateToProps = state =>  ({
+    storedLocation: state.profile.location
+});
+export default connect(mapStateToProps,{storeLocation})(LocationScreen);

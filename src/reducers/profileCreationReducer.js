@@ -1,7 +1,9 @@
-import {PROFILE_STORE_THEMES} from "../actions/types";
+import {PROFILE_STORE_THEMES,PROFILE_STORE_LOCATION,PROFILE_STORE_TYPE} from "../actions/types";
 
 const initialState = {
-    themes: {},
+    themes: [],
+    location: {},
+    types: [],
 };
 
 export default function (state = initialState, action) {
@@ -11,6 +13,16 @@ export default function (state = initialState, action) {
                 ...state,
                 themes: action.payload,
             };
+        case PROFILE_STORE_LOCATION:
+            return {
+                ...state,
+                location: action.payload
+            };
+        case PROFILE_STORE_TYPE:
+            return {
+                ...state,
+                types: action.payload
+            }
         default:
             return state;
     }

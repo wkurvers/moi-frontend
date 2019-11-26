@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Menu, Dropdown, Icon } from 'antd';
-import "./SearchProfileCreationModal.css"
+import "./SearchProfileCreationModal.css";
+import {connect} from 'react-redux';
+import {storeTypes} from "../../actions/profileCreationActions";
 
 class TypeScreen extends Component {
   constructor(props) {
@@ -8,7 +10,27 @@ class TypeScreen extends Component {
     this.state = {
       menu: null,
       itemChosen: null,
-      items: []
+      items: [
+        "Softwareontwikkeling",
+        "ICT-dienstverlening",
+        "Ontwerp",
+        "Holding",
+        "Chemische producten",
+        "Groothandel",
+        "Apparatenbouw",
+        "Onderzoek",
+        "Bouwmaterialen",
+        "Verhuur",
+        "Voedselproductie",
+        "Maritieme maakindustrie",
+        "Installatie",
+        "Financiele dienstverlening",
+        "Benzinestation",
+        "Zorg",
+        "Duurzame energie",
+        "Energie gerelateerde activiteiten",
+        "Media"
+      ],
     }
   }
 
@@ -20,8 +42,10 @@ class TypeScreen extends Component {
 
   onClick(e) {
     if(e.key !== "0") {
+      let itemChosen = this.state.items[e.key-1]
+      this.props.storeTypes(itemChosen)
       this.setState({
-        itemChosen: this.state.items[e.key-1]
+        itemChosen: itemChosen
       });
     } else {
       this.setState({
@@ -31,17 +55,10 @@ class TypeScreen extends Component {
   }
 
   buildMenu() {
-    let items = [
-      "type1",
-      "type2",
-      "type3",
-      "type4"
-    ];
-    this.setState({items: items})
     return (
       <Menu onClick={(e) => this.onClick(e)}>
         <Menu.Item key={0}>Geen</Menu.Item>
-        {items.map((item,i) => <Menu.Item key={i+1}>{item}</Menu.Item>)}
+        {this.state.items.map((item,i) => <Menu.Item key={i+1}>{item}</Menu.Item>)}
       </Menu>
     );
   }
@@ -78,4 +95,7 @@ class TypeScreen extends Component {
   }
 }
 
-export default TypeScreen;
+const mapStateToProps = state =>  ({
+    storedTypes: state.profile.types
+});
+export default connect(mapStateToProps,{storeTypes})(TypeScreen);
