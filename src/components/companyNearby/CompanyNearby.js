@@ -4,14 +4,14 @@ import { Row, Col, Icon } from "antd";
 import CompanyCard from "../companyCard/CompanyCard";
 
 const companies = [
-  { name: "Culgi B.V.", type: "Software ontwikkeling" },
-  { name: "ChiralVision B.V.", type: "Onderzoek" },
-  { name: "Toxys B.V.", type: "Farmacie" },
-  { name: "Foxgloves advies", type: "Advies" },
-  { name: "Algeo B.V.", type: "Holding" },
-  { name: "Algeo", type: "ICT-dienstverlening" },
-  { name: "Destil B.V.", type: "Detailhandel" },
-  { name: "Liander N.V.", type: "Ontwerp" }
+  { name: "Culgi B.V.", type: "Software ontwikkeling", theme: "htsm" },
+  { name: "ChiralVision B.V.", type: "Onderzoek", theme: "agrifood" },
+  { name: "Toxys B.V.", type: "Farmacie", theme: "chemie" },
+  { name: "Foxgloves advies", type: "Advies", theme: "circulaire_economie" },
+  { name: "Algeo B.V.", type: "Holding", theme: "lsh" },
+  { name: "Algeo", type: "ICT-dienstverlening", theme: "bouw" },
+  { name: "Destil B.V.", type: "Detailhandel", theme: "energie" },
+  { name: "Liander N.V.", type: "Ontwerp", theme: "agrifood" }
 ];
 
 export default class CompanyNearby extends Component {
