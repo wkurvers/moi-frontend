@@ -1,23 +1,8 @@
 import React, {Component, useState} from 'react';
-import {Modal} from 'antd';
+import {Input, Modal, Slider} from 'antd';
 import Map from "./Map";
-
-const data = [
-  {
-    id: 1,
-    name: "Park Slope",
-    latitude: "40.6710729",
-    longitude: "-73.9988001"
-  }
-];
-
-data[0].circle = {
-  radius: 3000,
-  options: {
-    strokeColor: "#ff0000"
-  }
-};
-
+import MapTwo from "./MapTwo";
+import "./LocationModal.css";
 
 
 class LocationModal extends Component {
@@ -29,7 +14,9 @@ class LocationModal extends Component {
       coords: {
         latitude: "40.6710729",
         longitude: "-73.9988001",
-      }
+      },
+      distance: 10,
+
       // data: {
       //   //id: 1,
       //
@@ -42,7 +29,7 @@ class LocationModal extends Component {
       // }
 
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.updateDistance = this.updateDistance.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
   }
 
@@ -53,9 +40,18 @@ class LocationModal extends Component {
     })
   }
 
-  componentDidMount() {
-    navigator.geolocation.getCurrentPosition(this.setCoords)
+  onError(err) {
+    console.warn(err);
+  }
 
+  componentDidMount() {
+
+    let options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+    navigator.geolocation.getCurrentPosition(this.setCoords, this.onError, options)
   }
 
   showModal() {
@@ -70,35 +66,56 @@ class LocationModal extends Component {
     });
   };
 
-  handleChange(event) {
-    const {name, value} = event.target;
-    this.setState({[name]: value});
+  updateDistance(distance) {
+    this.setState({distance});
   }
 
   render() {
     const {coords} = this.state;
-    console.log(coords)
+    let circle = {
+      radius: 500 * this.state.distance,
+      options: {
+        strokeColor: "#01A7C2"
+      }
+    };
     return (
         <Modal
             title={"Kies uw regio"}
             visible={this.state.visible}
-            bodyStyle={{paddingBottom: 40}}
             footer={null}
             onCancel={this.handleCancel}
         >
 
           <div className={"map-wrapper"}>
-            <Map
-                center={{ lat: coords.latitude, lng: coords.longitude }}
-                zoom={12}
-                coords={coords}
-                googleMapURL="https://maps.googleapis.com/maps/api/js?key="
-                loadingElement={<div style={{ height: "100%" }} />}
-                containerElement={<div style={{ height: 400}} />}
-                mapElement={<div style={{ height: "100%" }} />}
+            <MapTwo
+                lat={coords.latitude}
+                lng={coords.longitude}
+                radius={ 500 * this.state.distance}
             />
+            {/*<Map*/}
+            {/*    center={{ lat: coords.latitude, lng: coords.longitude }}*/}
+            {/*    zoom={12}*/}
+            {/*    coords={coords}*/}
+            {/*    circle={circle}*/}
+            {/*    googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-FsfMSTBRL8SgxjYWp4EUn1_KCw9U_88"*/}
+            {/*    loadingElement={<div style={{ height: 400 }} />}*/}
+            {/*    containerElement={<div style={{ height: 400}} />}*/}
+            {/*    mapElement={<div style={{ height: 400 }} />}*/}
+            {/*/>*/}
           </div>
 
+          <div className={"location-modal-slider-container"}>
+            <div>
+              Afstand
+            </div>
+            <div>
+              {this.state.distance + " km"}
+            </div>
+
+            <Slider min={0} max={200} onChange={this.updateDistance} name={"distance"} value={this.state.distance}>
+
+            </Slider>
+          </div>
         </Modal>
     );
   }

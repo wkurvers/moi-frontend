@@ -9,7 +9,6 @@ import {
 } from "react-google-maps";
 
 const Map = props => {
-  console.log(props)
   return (
       <GoogleMap
           defaultZoom={props.zoom}
@@ -21,13 +20,13 @@ const Map = props => {
               lng: parseFloat(props.coords.longitude)
             }}
         />
-        {props.coords.circle && <Circle
+        {props.circle && <Circle
             defaultCenter={{
               lat: parseFloat(props.coords.latitude),
               lng: parseFloat(props.coords.longitude)
             }}
-            radius={props.coords.circle.radius}
-            options={props.coords.circle.options}
+            radius={props.circle.radius}
+            options={props.circle.options}
         />}
       </GoogleMap>
   );
