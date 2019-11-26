@@ -8,11 +8,13 @@ import TypeScreen from "./TypeScreen";
 import WorkersScreen from "./WorkersScreen";
 import StartYearScreen from "./StartYearScreen";
 import LawFormScreen from "./LawFormScreen";
+import BAGscreen from "./BAGscreen";
+import FinishedScreen from "./FinishedScreen";
 import Footer from "./Footer";
 const {Step} = Steps;
 const steps = [
 	{
-		title:"Start"
+		title:"Zoekprofiel creëren"
 	},
 	{
 		title:"Thema's"
@@ -34,6 +36,9 @@ const steps = [
 	},
 	{
 		title:"BAG"
+	},
+	{
+		title:"Klaar!"
 	}
 ];
 class SearchProfileCreationModal extends Component {
@@ -70,7 +75,7 @@ class SearchProfileCreationModal extends Component {
 
 	next(current) {
 		let next = current + 1;
-		if(next <= 8) {
+		if(next < steps.length) {
 			this.setState({
 				activeComponent: next
 			});
@@ -87,26 +92,7 @@ class SearchProfileCreationModal extends Component {
 	}
 
 	getTitleName() {
-		switch(this.state.activeComponent) {
-			case 0:
-				return "Zoekprofiel creëren";
-			case 1:
-				return "Thema's";
-			case 2:
-				return "Locatie";
-			case 3:
-				return "Type";
-			case 4:
-				return "Aantal werknemers";
-			case 5:
-				return "Start jaar";
-			case 6:
-				return "Rechtsvorm";
-			case 7:
-				return "BAG";
-			default:
-				return "Zoekprofiel creëren";
-		};
+		return steps[this.state.activeComponent].title
 	};
 
 	setActiveComponent(component) {
@@ -131,6 +117,10 @@ class SearchProfileCreationModal extends Component {
 				return <StartYearScreen/>;
 			case 6:
 				return <LawFormScreen/>;
+			case 7:
+				return <BAGscreen/>;
+			case 8:
+				return <FinishedScreen/>;
 			default:
 				return <BeginScreen/>;
 		};

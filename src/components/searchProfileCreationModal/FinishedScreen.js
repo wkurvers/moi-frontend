@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
+import {Button } from "antd";
 import "./SearchProfileCreationModal.css"
 
-class BeginScreen extends Component {
+class FinishedScreen extends Component {
 
   constructor(props) {
     super(props);
@@ -15,14 +16,16 @@ class BeginScreen extends Component {
         <div className={"modal-container"}>
           <div className={"info-text-container"}>
             <div className={"info-text"}>
-              Met een zoekprofiel kun je snel een uitgebreid zoekbeeld creëren zodat je bedrijven kunt vinden waar jij geïnteresseerd in bent!
+              Je hebt je zoekprofiel nu opgebouwd!
             </div>
             <div className={"info-sub-text"}>
-              Volg de stappen om je zoekprofiel op te bouwen, het duurt maar een paar minuten!
+              Je kunt dit zoekprofiel nu gebruiken om interessante bedrijven te vinden.
             </div>
+            <Button type="primary"className={"finished-button"}>Toepassen</Button>
           </div>
         </div>
     );
   }
 }
-export default BeginScreen;
+
+export default FinishedScreen;

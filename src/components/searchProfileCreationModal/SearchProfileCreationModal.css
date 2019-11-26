@@ -73,7 +73,7 @@
     margin-top: 50px;
 }
 
-.lawform-container {
+.item-container {
     height: 75px;
     width: 150px;
     display: flex;
@@ -89,7 +89,7 @@
     transition: all .2s ease-in;
 }
 
-.lawform-container:hover {
+.item-container:hover {
     background: #73d13d;
     cursor: pointer;
     border: 2px solid #00697a;
@@ -97,7 +97,7 @@
     color: #595959;    
 }
 
-.lawform-container-active {
+.item-container-active {
     background: #73d13d;
     color: #595959;
     height: 75px;
@@ -115,10 +115,39 @@
     transition: all .2s ease-in;
 }
 
-.lawform-container-active:hover {
+.item-container-active:hover {
     background: white;
     cursor: pointer;
     border: 2px solid #00697a;
     box-shadow: 0px 0px;
     color: #595959;    
+}
+
+.small-item-container {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    border: 2px solid #00697a;
+    font-size: 20px;
+    color: #595959;
+    box-shadow: 2.5px 2.5px gray;
+    /*Color fade in*/
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+}
+
+.BAGmodal {
+    height: 350px;
+}
+
+.Thememodal-container {
+    height: 500px;
+}
+
+.finished-button: {
+    display: flex;
+    align-self: flex-end;
 }

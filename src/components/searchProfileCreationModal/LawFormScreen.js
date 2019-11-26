@@ -51,44 +51,44 @@ class LawFormScreen extends Component {
             <Row type="flex" justify="space-between" gutter={[8,8]}>
               <Col>
                 {!this.isActive(this.state.forms[0]) &&
-                  <Button id={this.state.forms[0]} className={'lawform-container'} onClick={(e) => this.onClick(e)}>{this.state.forms[0]}</Button>
+                  <Button id={this.state.forms[0]} className={'item-container'} onClick={(e) => this.onClick(e)}>{this.state.forms[0]}</Button>
                 }
                 {this.isActive(this.state.forms[0]) &&
-                  <Button id={this.state.forms[0]} className={'lawform-container-active'} onClick={(e) => this.onClick(e)}>{this.state.forms[0]}</Button>
+                  <Button id={this.state.forms[0]} className={'item-container-active'} onClick={(e) => this.onClick(e)}>{this.state.forms[0]}</Button>
                 }
               </Col>
               <Col>
                 {!this.isActive(this.state.forms[1]) &&
-                  <Button id={this.state.forms[1]} className={'lawform-container'} onClick={(e) => this.onClick(e)}>{this.state.forms[1]}</Button>
+                  <Button id={this.state.forms[1]} className={'item-container'} onClick={(e) => this.onClick(e)}>{this.state.forms[1]}</Button>
                 }
                 {this.isActive(this.state.forms[1]) &&
-                  <Button id={this.state.forms[1]} className={'lawform-container-active'} onClick={(e) => this.onClick(e)}>{this.state.forms[1]}</Button>
+                  <Button id={this.state.forms[1]} className={'item-container-active'} onClick={(e) => this.onClick(e)}>{this.state.forms[1]}</Button>
                 }
               </Col>
               <Col>
                 {!this.isActive(this.state.forms[2]) &&
-                  <Button id={this.state.forms[2]} className={'lawform-container'} onClick={(e) => this.onClick(e)}>{this.state.forms[2]}</Button>
+                  <Button id={this.state.forms[2]} className={'item-container'} onClick={(e) => this.onClick(e)}>{this.state.forms[2]}</Button>
                 }
                 {this.isActive(this.state.forms[2]) &&
-                  <Button id={this.state.forms[2]} className={'lawform-container-active'} onClick={(e) => this.onClick(e)}>{this.state.forms[2]}</Button>
+                  <Button id={this.state.forms[2]} className={'item-container-active'} onClick={(e) => this.onClick(e)}>{this.state.forms[2]}</Button>
                 }
               </Col>
             </Row>
             <Row type="flex" justify="space-around" gutter={[8,8]}>
               <Col>
                 {!this.isActive(this.state.forms[3]) &&
-                  <Button id={this.state.forms[3]} className={'lawform-container'} onClick={(e) => this.onClick(e)}>{this.state.forms[3]}</Button>
+                  <Button id={this.state.forms[3]} className={'item-container'} onClick={(e) => this.onClick(e)}>{this.state.forms[3]}</Button>
                 }
                 {this.isActive(this.state.forms[3]) &&
-                  <Button id={this.state.forms[3]} className={'lawform-container-active'} onClick={(e) => this.onClick(e)}>{this.state.forms[3]}</Button>
+                  <Button id={this.state.forms[3]} className={'item-containeractive'} onClick={(e) => this.onClick(e)}>{this.state.forms[3]}</Button>
                 }
               </Col>
               <Col>
                 {!this.isActive(this.state.forms[4]) &&
-                  <Button id={this.state.forms[4]} className={'lawform-container'} onClick={(e) => this.onClick(e)}>{this.state.forms[4]}</Button>
+                  <Button id={this.state.forms[4]} className={'item-container'} onClick={(e) => this.onClick(e)}>{this.state.forms[4]}</Button>
                 }
                 {this.isActive(this.state.forms[4]) &&
-                  <Button id={this.state.forms[4]} className={'lawform-container-active'} onClick={(e) => this.onClick(e)}>{this.state.forms[4]}</Button>
+                  <Button id={this.state.forms[4]} className={'item-container-active'} onClick={(e) => this.onClick(e)}>{this.state.forms[4]}</Button>
                 }
               </Col>
             </Row>
