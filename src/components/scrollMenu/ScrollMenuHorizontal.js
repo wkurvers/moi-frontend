@@ -1,7 +1,7 @@
 import ScrollMenu from "react-horizontal-scrolling-menu";
 import React from "react";
 import '../../screens/results/Results.css'
-import {categories} from "../../screens/results/Categories";
+import themes from '../../utils/themes.js';
 import PropTypes from "prop-types";
 
 // eslint-disable-next-line react/prop-types
@@ -10,9 +10,9 @@ const MenuItem = ({text, selected}) => {
 };
 
 export const Menu = (list, selected) =>
-    categories.map(el => {
+    Object.values(themes).map(el => {
         const onClick = () => console.log('original onClick ', name);
-        return <MenuItem text={el} key={el} selected={selected} onClick={onClick}/>;
+        return <MenuItem text={el.name} key={el.name} selected={selected} onClick={onClick}/>;
     });
 
 const Arrow = ({text, className}) => {
@@ -34,7 +34,7 @@ export default class ScrollMenuHorizontal extends React.Component {
         dragging: true,
         hideArrows: true,
         hideSingleArrow: true,
-        itemsCount: categories.length,
+        itemsCount: themes.length,
         selected: 'item1',
         scrollToSelected: true,
         translate: undefined,
@@ -48,7 +48,7 @@ export default class ScrollMenuHorizontal extends React.Component {
     constructor(props) {
         super(props);
         this.menu = null;
-        this.menuItems = Menu(categories.slice(0, categories.length), this.state.selected);
+        this.menuItems = Menu(themes, this.state.selected);
     }
 
     componentDidUpdate(prevProps, prevState) {
