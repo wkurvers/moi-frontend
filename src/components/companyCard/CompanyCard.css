@@ -11,6 +11,8 @@
 }
 
 .companycard-name {
+  max-width: 75%;
+  text-align: center;
   color: white;
   margin: 0;
 }
