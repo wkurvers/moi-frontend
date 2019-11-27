@@ -5,6 +5,7 @@ import topImage from '../../assets/vector-abstract-modern-polygonal-geometric-ba
 import {Icon, Modal, Input, Slider, InputNumber, Pagination, Tag} from 'antd';
 import './Results.css';
 import {Container, Row, Col} from 'react-bootstrap';
+import themes from '../../utils/themes'
 import Image from "react-bootstrap/Image";
 import {FETCH_USERS} from "../../actions/types";
 
@@ -292,10 +293,10 @@ class Results extends Component {
     }
 
     getThemes(company) {
-        const themes = Object.keys(company['Thema\'s']).map(key =>
-            <Tag>{company['Thema\'s'][key]}</Tag>
+        const themesKeys = Object.keys(company['Thema\'s']).map(key =>
+            <Tag style={{color: "white", backgroundColor: themes[key.slice(9)].colorOne }} >{company['Thema\'s'][key]}</Tag>
         );
-        return themes
+        return themesKeys
     }
 
 
