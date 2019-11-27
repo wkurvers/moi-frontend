@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Slider} from 'antd';
 import {connect} from 'react-redux';
-import {storeStartYear} from "../../actions/profileCreationActions";
+import {storeStartYear,getProfile} from "../../actions/profileCreationActions";
 import "./SearchProfileCreationModal.css"
 
 class StartYearScreen extends Component {
@@ -9,10 +9,21 @@ class StartYearScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      value: [1900, new Date().getFullYear()]
     }
   }
 
-  onAfterChange(e) {
+  componentDidMount() {
+    this.props.getProfile()
+    this.setState({
+      value: this.props.storedStartYear
+    });
+  }
+
+  onChange(e) {
+    this.setState({
+      value: e
+    });
     this.props.storeStartYear(e)
   }
 
@@ -23,7 +34,7 @@ class StartYearScreen extends Component {
           <div className={"info-text"}>
             Geef de periode aan waarin het bedrijf begonnen mag zijn
           </div>
-          <Slider min={1900} max={new Date().getFullYear()} range tooltipVisible defaultValue={[1900,new Date().getFullYear()]}/>
+          <Slider min={1900} max={new Date().getFullYear()} range tooltipVisible value={this.state.value} onChange={(e) => this.onChange(e)}/>
         </div>
       </div>
     );
@@ -32,4 +43,4 @@ class StartYearScreen extends Component {
 const mapStateToProps = state =>  ({
     storedStartYear: state.profile.startYear
 });
-export default connect(mapStateToProps,{storeStartYear})(StartYearScreen);
+export default connect(mapStateToProps,{storeStartYear,getProfile})(StartYearScreen);

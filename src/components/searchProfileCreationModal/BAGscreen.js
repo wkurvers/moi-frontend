@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Row, Col, Button} from 'antd';
+import {connect} from 'react-redux';
+import {storeBAGs,getProfile} from "../../actions/profileCreationActions";
 import "./SearchProfileCreationModal.css"
 
 class BAGScreen extends Component {
@@ -19,6 +21,13 @@ class BAGScreen extends Component {
     }
   }
 
+  componentDidMount() {
+    this.props.getProfile()
+    this.setState({
+      activeBAGs: this.props.storedBAGs
+    })
+  }
+
   onClick(e) {
     document.activeElement.blur() 
     let activeBAGs = this.state.activeBAGs
@@ -28,11 +37,12 @@ class BAGScreen extends Component {
       activeBAGs.splice(activeBAGs.indexOf(e.target.id),1)
     }
     this.setState({activeBAGs: activeBAGs});
+    this.props.storeBAGs(activeBAGs);
   }
 
   isActive(form) {
     for(let index in this.state.activeBAGs) {
-      if(form == this.state.activeBAGs[index]) {
+      if(form === this.state.activeBAGs[index]) {
         return true
       }
     }
@@ -90,4 +100,7 @@ class BAGScreen extends Component {
   }
 }
 
-export default BAGScreen;
+const mapStateToProps = state =>  ({
+    storedBAGs: state.profile.bags
+});
+export default connect(mapStateToProps,{storeBAGs,getProfile})(BAGScreen);

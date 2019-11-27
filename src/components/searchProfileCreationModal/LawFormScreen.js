@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Row, Col, Button} from 'antd';
+import {connect} from 'react-redux';
+import {storeLawForms,getProfile} from "../../actions/profileCreationActions";
 import "./SearchProfileCreationModal.css"
 
 class LawFormScreen extends Component {
@@ -20,6 +22,13 @@ class LawFormScreen extends Component {
     }
   }
 
+  componentDidMount() {
+    this.props.getProfile();
+    this.setState({
+      activeForms: this.props.storedLawForms
+    })
+  }
+
   onClick(e) {
     document.activeElement.blur() 
     let activeForms = this.state.activeForms
@@ -29,11 +38,12 @@ class LawFormScreen extends Component {
       activeForms.splice(activeForms.indexOf(e.target.id),1)
     }
     this.setState({activeForms: activeForms});
+    this.props.storeLawForms(activeForms);
   }
 
   isActive(form) {
     for(let index in this.state.activeForms) {
-      if(form == this.state.activeForms[index]) {
+      if(form === this.state.activeForms[index]) {
         return true
       }
     }
@@ -80,7 +90,7 @@ class LawFormScreen extends Component {
                   <Button id={this.state.forms[3]} className={'item-container'} onClick={(e) => this.onClick(e)}>{this.state.forms[3]}</Button>
                 }
                 {this.isActive(this.state.forms[3]) &&
-                  <Button id={this.state.forms[3]} className={'item-containeractive'} onClick={(e) => this.onClick(e)}>{this.state.forms[3]}</Button>
+                  <Button id={this.state.forms[3]} className={'item-container-active'} onClick={(e) => this.onClick(e)}>{this.state.forms[3]}</Button>
                 }
               </Col>
               <Col>
@@ -99,4 +109,7 @@ class LawFormScreen extends Component {
   }
 }
 
-export default LawFormScreen;
+const mapStateToProps = state =>  ({
+    storedLawForms: state.profile.lawForms
+});
+export default connect(mapStateToProps,{storeLawForms,getProfile})(LawFormScreen);

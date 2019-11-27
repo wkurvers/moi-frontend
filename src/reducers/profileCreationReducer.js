@@ -1,10 +1,22 @@
-import {PROFILE_STORE_THEMES,PROFILE_STORE_LOCATION,PROFILE_STORE_TYPE,PROFILE_STORE_WOKRERS,PROFILE_STORE_STARTYEAR} from "../actions/types";
+import {
+    PROFILE_STORE_THEMES,
+    PROFILE_STORE_LOCATION,
+    PROFILE_STORE_TYPE,
+    PROFILE_STORE_WOKRERS,
+    PROFILE_STORE_STARTYEAR,
+    PROFILE_STORE_LAWFORMS,
+    PROFILE_STORE_BAGS,
+    GET_PROFILE,
+} from "../actions/types";
 
 const initialState = {
     themes: [],
-    location: {},
-    types: [],
-    workers: []
+    location: null,
+    types: null,
+    workers: [0,150],
+    startYear: [1900, new Date().getFullYear()],
+    lawForms: [],
+    bags: []
 };
 
 export default function (state = initialState, action) {
@@ -34,6 +46,20 @@ export default function (state = initialState, action) {
                 ...state,
                 startYear: action.payload
             };
+        case PROFILE_STORE_LAWFORMS:
+            return {
+                ...state,
+                lawForms: action.payload
+            }
+        case PROFILE_STORE_BAGS:
+            return {
+                ...state,
+                bags: action.payload
+            }
+        case GET_PROFILE:
+            return {
+                ...state
+            }
         default:
             return state;
     }

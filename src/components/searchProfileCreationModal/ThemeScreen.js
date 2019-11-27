@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {Row, Col, Button} from 'antd';
+import {Row, Col} from 'antd';
 import {connect} from 'react-redux';
-import {storeThemes} from "../../actions/profileCreationActions";
+import {storeThemes,getProfile} from "../../actions/profileCreationActions";
 import "./SearchProfileCreationModal.css"
 
 class ThemeScreen extends Component {
@@ -25,8 +25,12 @@ class ThemeScreen extends Component {
         'Water'
       ],
       activeThemes: [],
-      selectedThemes: []
     }
+  }
+
+  componentDidMount() {
+    this.props.getProfile()
+    this.setState({activeThemes: this.props.storedThemes})
   }
 
   onClick(e) {
@@ -37,6 +41,7 @@ class ThemeScreen extends Component {
     } else {
       activeThemes.splice(activeThemes.indexOf(e.target.id),1)
     }
+    console.log(activeThemes)
     this.setState({activeThemes: activeThemes});
     this.props.storeThemes(activeThemes)
   }
@@ -104,6 +109,6 @@ class ThemeScreen extends Component {
 }
 
 const mapStateToProps = state =>  ({
-    storedThemes: state.profile.themes
+    storedThemes: state.profile.themes,
 });
-export default connect(mapStateToProps,{storeThemes})(ThemeScreen);
+export default connect(mapStateToProps,{storeThemes,getProfile})(ThemeScreen);

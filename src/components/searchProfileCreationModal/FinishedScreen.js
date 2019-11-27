@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Button } from "antd";
+import {connect} from 'react-redux';
+import {getProfile} from "../../actions/profileCreationActions";
 import "./SearchProfileCreationModal.css"
 
 class FinishedScreen extends Component {
@@ -8,8 +10,9 @@ class FinishedScreen extends Component {
     super(props);
     this.state = {
     }
+    this.props.getProfile()
+    console.log(this.props)
   }
-
 
   render() {
     return (
@@ -28,4 +31,8 @@ class FinishedScreen extends Component {
   }
 }
 
-export default FinishedScreen;
+
+const mapStateToProps = state =>  ({
+    profile: state.profile
+});
+export default connect(mapStateToProps,{getProfile})(FinishedScreen);

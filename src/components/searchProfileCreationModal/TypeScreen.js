@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Menu, Dropdown, Icon } from 'antd';
 import "./SearchProfileCreationModal.css";
 import {connect} from 'react-redux';
-import {storeTypes} from "../../actions/profileCreationActions";
+import {storeTypes,getProfile} from "../../actions/profileCreationActions";
 
 class TypeScreen extends Component {
   constructor(props) {
@@ -35,9 +35,12 @@ class TypeScreen extends Component {
   }
 
   componentDidMount() {
+    this.props.getProfile()
     this.setState({
-      menu: this.buildMenu()
+      menu: this.buildMenu(),
+      itemChosen: this.props.storedTypes
     })
+    
   }
 
   onClick(e) {
@@ -98,4 +101,4 @@ class TypeScreen extends Component {
 const mapStateToProps = state =>  ({
     storedTypes: state.profile.types
 });
-export default connect(mapStateToProps,{storeTypes})(TypeScreen);
+export default connect(mapStateToProps,{storeTypes,getProfile})(TypeScreen);
