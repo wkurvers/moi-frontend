@@ -94,7 +94,9 @@ class AccountModal extends Component {
           footer={null}
           onCancel={this.handleCancel}
       >
-        {this.getActiveComponent()}
+        <div className={"account-modal-body-wrapper"}>
+          {this.getActiveComponent()}
+        </div>
       </Modal>
     );
   }
