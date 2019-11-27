@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import "./Home.css";
 import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
+import CompanyNearby from "../../components/companyNearby/CompanyNearby";
 import LocationModal from  "../../components/locationModal/LocationModal.js"
-
 
 class Home extends Component {
 
@@ -13,12 +14,9 @@ class Home extends Component {
       showLogin: false,
       showRegistration: false
     };
+    };
 
     this.locationModal = React.createRef()
-  }
-
-
-  componentDidMount() {
   }
 
 
@@ -37,6 +35,8 @@ class Home extends Component {
             Kies regio
           </div>
         </div>
+        <CompanyNearby />
+        <Footer />
       </div>
     );
   }

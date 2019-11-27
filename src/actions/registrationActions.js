@@ -1,6 +1,7 @@
 import {REGISTRATION, RESET_REGISTRATION_RESPONSE} from "./types";
+import {API_URL} from "../conf.js";
 export const registerUser = (registerData) => dispatch =>  {
-    fetch('http://localhost:8000/api/register/', {
+    fetch(API_URL+ '/api/register/', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -14,7 +15,7 @@ export const registerUser = (registerData) => dispatch =>  {
         data.status = res.status
         dispatch({
             type: REGISTRATION,
-             payload: data,
+            payload: data,
         })
     }).catch(data =>  {
             data.status = res.status

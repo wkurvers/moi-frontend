@@ -1,28 +1,50 @@
-.headerMain{
-    background-color: #006989;
+.navbar {
+  background-color: #006989 !important;
+  padding: 10px;
 }
 
-.navbar-light .navbar-nav .nav-link {
-    color: #f8f9fa;
+.navbar-dark .navbar-nav .nav-link {
+  color: #f8f9fa;
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  margin-right: 30px;
 }
 
-.navbar-light .navbar-brand {
-    color: #f8f9fa;
-    /*margin-left: 500%;*/
-    /*margin-right: 5%;*/
+.navbar-dark .navbar-brand {
+  color: #f8f9fa;
+  margin: 0px;
+  padding: 0px;
+  font-weight: 700;
+  font-size: 32px;
+  font-family: "Raleway", sans-serif;
+
+  /*margin-left: 500%;*/
+  /*margin-right: 5%;*/
 }
 
-#avatar{
-    text-align: right;
-    color: #01A7C2;
+a:hover {
+  color: #cccccc !important;
 }
 
+#avatar {
+  text-align: right;
+  color: #01a7c2;
+}
 
 .dropdown-toggle::after {
-    margin-right: 10em;
-    display:none;
+  margin-right: 10em;
+  display: none;
 }
 
 .dropdownContainer {
-margin-right: 3em;
+  margin-right: 3em;
+}
+
+@media (min-width: 992px) {
+  .navbar {
+    background-color: #006989 !important;
+    padding: 10px;
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }
 }
