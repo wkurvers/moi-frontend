@@ -1,29 +1,17 @@
 import React, {Component} from 'react';
-import {Row, Col} from 'antd';
+import {Row, Col, Icon} from 'antd';
 import {connect} from 'react-redux';
 import {storeThemes,getProfile} from "../../actions/profileCreationActions";
+import themes from '../../utils/themes';
 import "./SearchProfileCreationModal.css"
+
 
 class ThemeScreen extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      themes: [
-        'AgriFood',
-        'Bouw',
-        'Chemie',
-        'Circulaire Economie',
-        'Creatieve Industrie',
-        'Energie',
-        'HTSM',
-        'ICT',
-        'Life Sciences en Health',
-        'Logistiek',
-        'Social Impact',
-        'Tuinbouw',
-        'Water'
-      ],
+      themes: Object.values(themes),
       activeThemes: [],
     }
   }
@@ -33,15 +21,14 @@ class ThemeScreen extends Component {
     this.setState({activeThemes: this.props.storedThemes})
   }
 
-  onClick(e) {
+  onClick(value) {
     document.activeElement.blur() 
     let activeThemes = this.state.activeThemes
-    if(!this.isActive(e.target.id)) {
-      activeThemes.push(e.target.id)
+    if(!this.isActive(value)) {
+      activeThemes.push(value)
     } else {
-      activeThemes.splice(activeThemes.indexOf(e.target.id),1)
+      activeThemes.splice(activeThemes.indexOf(value),1)
     }
-    console.log(activeThemes)
     this.setState({activeThemes: activeThemes});
     this.props.storeThemes(activeThemes)
   }
@@ -55,45 +42,6 @@ class ThemeScreen extends Component {
     return false
   }
 
-  getRow(rowNum, rowCount) {
-    let startIn = rowNum * 3;
-    let middleIn;
-    let endIn;
-    if(startIn !== this.state.themes.length-1) {
-      middleIn = startIn + 1;
-      if(middleIn !== this.state.themes.length-1) {
-        endIn = startIn + 2;
-      }
-    }
-    return (
-      <Row type="flex" justify="space-between" gutter={[16, 16]}>
-        <Col>
-          <div id={this.state.themes[startIn]} onClick={(e) => this.onClick(e)}>{this.state.themes[startIn]}</div>
-        </Col>
-        <Col>
-          <div id={this.state.themes[middleIn]} onClick={(e) => this.onClick(e)}>{this.state.themes[middleIn]}</div>
-        </Col>
-        <Col>
-          <div id={this.state.themes[endIn]} onClick={(e) => this.onClick(e)}>{this.state.themes[endIn]}</div>
-        </Col>
-      </Row>
-    );
-  }
-
-  getThemes() {
-    let themeCount = this.state.themes.length;
-    let rowCount = Math.ceil(themeCount/3);
-    return (
-      <div className={"theme-select-container"}>
-        {this.getRow(0,rowCount)}
-        {this.getRow(1,rowCount)}
-        {this.getRow(2,rowCount)}
-        {this.getRow(3,rowCount)}
-        {this.getRow(4,rowCount)}
-      </div>
-    );
-  }
-
   render() {
     return (
       <div className={"Thememodal-container"}>
@@ -102,7 +50,25 @@ class ThemeScreen extends Component {
             Geef aan welke thema's belangrijk voor jou zijn
           </div>
         </div>
-        {this.getThemes()}
+        <div className={"grid-container"}>
+          <Row type="flex" justify="center" gutter={[4,4]}>
+          {this.state.themes.map((value,index) => 
+            <Col key={index} span={6} style={{display: 'flex', justifyContent: 'center'}}>
+              {!this.isActive(value.name) &&
+                <div className={"logo-theme"} onClick={() => this.onClick(value.name)}>
+                  <img src={value.logo} className={"logo-theme"}/>
+                </div>
+              }
+              {this.isActive(value.name) &&
+                <div className={"logo-theme"} id={value.name} onClick={() => this.onClick(value.name)}>
+                  <img src={value.logo} className={"logo-theme-active"}></img>
+                  <Icon className={"logo-theme-active-icon"} type="check" />
+                </div>
+              }
+            </Col>
+          )}
+          </Row>
+        </div>
       </div>
     );
   }

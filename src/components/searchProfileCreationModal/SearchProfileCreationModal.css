@@ -29,6 +29,8 @@
 
 .modal-container {
     height: 200px;
+    padding: 24px;
+    margin: 10px;
 }
 
 .info-text-container {
@@ -41,7 +43,7 @@
     display: flex;
     flex-direction: column;
     margin-top: 10px;
-    height: 200px;
+    height: 150px;
     justify-content: space-between;
 }
 
@@ -49,6 +51,8 @@
     font-size: 18px;
     color: black;
     margin-bottom: 10px;
+    display: flex;
+    align-self: center;
 }
 
 .info-sub-text {
@@ -144,10 +148,55 @@
 }
 
 .Thememodal-container {
-    height: 500px;
+    height: 375px;
+    
+}
+
+.grid-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .finished-button: {
     display: flex;
     align-self: flex-end;
+}
+
+.logo-theme {
+    height: 80px;
+    width: 80px;
+    /*Color fade in*/
+    -moz-transition: all .5s ease-in;
+    -o-transition: all .5s ease-in;
+    -webkit-transition: all .5s ease-in;
+    transition: all .5s ease-in;
+}
+
+.logo-theme:hover {
+    cursor: pointer;
+}
+
+.logo-theme-active:hover {
+    cursor: pointer;
+}
+
+.logo-theme-active-icon {
+    position: absolute;
+    top: 25%;
+    right: 30%;
+    font-size: 50px;
+    color: #237804
+}
+
+.logo-theme-active {
+    height: 80px;
+    width: 80px;
+    opacity: 0.25;
+    /*Color fade in*/
+    -moz-transition: all .5s ease-in;
+    -o-transition: all .5s ease-in;
+    -webkit-transition: all .5s ease-in;
+    transition: all .5s ease-in;
 }

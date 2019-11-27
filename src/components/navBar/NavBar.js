@@ -1,16 +1,10 @@
 import React, { Component } from "react";
 import "antd/dist/antd.css";
 import "./NavBar.css";
-<<<<<<< HEAD
-import { Nav, Navbar} from "react-bootstrap";
+import { Nav, Navbar, NavDropdown} from "react-bootstrap";
 import { Avatar} from "antd";
 import AccountModal from  "../../components/accountModal/AccountModal.js"
 import SearchProfileCreationModal from "../../components/searchProfileCreationModal/SearchProfileCreationModal.js"
-=======
-import { Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { Avatar } from "antd";
-import AccountModal from "../../components/accountModal/AccountModal.js";
->>>>>>> upstream/master
 
 class NavBar extends Component {
   constructor(props) {
