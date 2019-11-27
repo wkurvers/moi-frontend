@@ -9,7 +9,7 @@ class StartYearScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: [1900, new Date().getFullYear()]
+      value: [1800, new Date().getFullYear()]
     }
   }
 

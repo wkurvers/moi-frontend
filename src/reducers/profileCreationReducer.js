@@ -14,7 +14,7 @@ const initialState = {
     location: null,
     types: null,
     workers: [0,150],
-    startYear: [1900, new Date().getFullYear()],
+    startYear: [1800, new Date().getFullYear()],
     lawForms: [],
     bags: []
 };

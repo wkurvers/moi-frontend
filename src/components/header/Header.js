@@ -7,33 +7,20 @@ export default class Header extends Component {
     return (
       <div className="header">
         <div className="header-title-container">
-          <img
-            className={"header-image"}
-            src={require("../../assets/header_shape.svg")}
-          />
-          <img
-            className={"header-image-building"}
-            src={require("../../assets/building_shape.png")}
-          />
+          <img className={"header-image"} src={require("../../assets/header_shape.svg")} />
+          <img className={"header-image-building"} src={require("../../assets/building_shape.png")} />
           <h1 className="header-title">
-            <p
-              className="header-title"
-              style={{ fontWeight: 400, display: "inline-block" }}
-            >
+            <h1 className="header-title-bold" style={{ fontWeight: 400, display: "inline-block" }}>
               Suspendisse
-            </p>{" "}
+            </h1>{" "}
             sodales nulla{" "}
-            <p
-              className="header-title"
-              style={{ fontWeight: 400, display: "inline-block" }}
-            >
+            <h1 className="header-title-bold" style={{ fontWeight: 400, display: "inline-block" }}>
               in nulla
-            </p>{" "}
+            </h1>{" "}
             molestie placerat.
           </h1>
           <h3 className="header-subtitle">
-            Curabitur luctus sapien auctor augue dapibus, non sodales augue
-            cursus. Cras fermentum tortor a magna semper.
+            Curabitur luctus sapien auctor augue dapibus, non sodales augue cursus. Cras fermentum tortor a magna semper.
           </h3>
           <SearchBar />
         </div>
