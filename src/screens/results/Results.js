@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Breakpoint, BreakpointProvider} from 'react-socks';
 import ScrollMenuHorizontal from '../../components/scrollMenu/ScrollMenuHorizontal';
 import topImage from '../../assets/vector-abstract-modern-polygonal-geometric-background.jpg';
-import {Icon, Modal, Input, Slider, InputNumber, Pagination} from 'antd';
+import {Icon, Modal, Input, Slider, InputNumber, Pagination, Tag} from 'antd';
 import './Results.css';
 import {Container, Row, Col} from 'react-bootstrap';
 import Image from "react-bootstrap/Image";
@@ -291,18 +291,34 @@ class Results extends Component {
         }
     }
 
+    getThemes(company) {
+        const themes = Object.keys(company['Thema\'s']).map(key =>
+            <Tag>{company['Thema\'s'][key]}</Tag>
+        );
+        return themes
+    }
+
+
     resultCompany() {
         const companyItems = this.state.data.results.map(company => (
+
             <div>
-                <Row className={'companyContainer'}>
-                    <Col  span={18} push={6}>
-                        <div  key={company.ID}>
-                            <h3>{company.Bedrijfsnaam}</h3>
-                            <h5>{company.Websites}</h5>
+                <Row className={'companyContainer'} noGutters={true}>
+                    <Col xs={12} md={8} lg={6} >
+                        <div id={'leftside'} key={company.ID}>
+                            <h5 id={'companyName'}>{company.Bedrijfsnaam}</h5>
+                            <a href={company.Websites}>{company.Websites}</a>
+                            <div id={'companyThemes'}>
+                                {this.getThemes(company)}
+                            </div>
+
                         </div>
                     </Col>
-                    <Col span={6} pull={18}>
-
+                    <Col xs={6} md={4}  >
+                        <div id={'rightside'}>
+                            <h6 id={'companyName'}>{company.Plaats}</h6>
+                            <h7>{company.Provincie}</h7>
+                        </div>
                     </Col>
                 </Row>
             </div>
@@ -397,7 +413,7 @@ class Results extends Component {
                                         <InputNumber min={1} max={10000} defaultValue={0} onChange={this.onChangeISB}/>
                                     </Col>
 
-                                    <Col className={'resultsContainer'} md={8}>
+                                    <Col className={'resultsContainer'}>
                                         {this.resultCompany()}
 
                                         <Pagination id={'pagination'} defaultCurrent={6} total={500}/>
