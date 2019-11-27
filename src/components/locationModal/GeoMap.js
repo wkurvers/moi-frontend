@@ -15,7 +15,8 @@ class GeoMap extends Component {
       zoom: 13
     }
     this.map = React.createRef();
-    this.marker = React.createRef();
+    this.circle = React.createRef();
+    this.updateZoom = this.updateZoom.bind(this);
   }
 
   componentDidMount() {
@@ -39,14 +40,25 @@ class GeoMap extends Component {
     console.warn(err);
   }
 
+  updateZoom = () => {
+    console.log("YOOOOO")
+    this.map.current.leafletElement.fitBounds(this.circle.current.leafletElement.getBounds())
+
+    this.setState({
+      zoom: this.map.current.leafletElement.getZoom()
+    })
+  }
+
   updateLocation = (e) => {
     //this.map.current.leafletElement.fitBounds(e.latlng)
     //console.log(this.marker.current.leafletElement._latlng)
-    console.log(this.map.current.leafletElement.getBounds().pad(this.props.radius))
+    //console.log(this.map.current.leafletElement.getBounds().pad(this.props.radius))
 
-    console.log(this.map.current.leafletElement)
+    console.log(this.circle.current.leafletElement.getBounds())
+    this.map.current.leafletElement.fitBounds(this.circle.current.leafletElement.getBounds())
+    console.log(this.map.current.leafletElement.getZoom())
     //this.map.current.leafletElement.setBounds(this.marker.current.leafletElement._latlng)
-    this.setState({ position: e.latlng });
+    this.setState({ position: e.latlng});
   }
 
 
@@ -69,8 +81,8 @@ class GeoMap extends Component {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
             />
-            <Circle center={position} radius={this.props.radius}>
-              <Marker ref={this.marker} position={position} />
+            <Circle ref={this.circle} center={position} radius={this.props.radius}>
+              <Marker position={position} />
             </Circle>
           </Map>
         </div>

@@ -18,6 +18,8 @@ class LocationModal extends Component {
       distance: 10,
       zoom: 13
     };
+
+    this.geoMap = React.createRef();
     this.updateDistance = this.updateDistance.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
   }
@@ -37,6 +39,7 @@ class LocationModal extends Component {
 
   updateDistance(distance) {
     this.setState({distance});
+    this.geoMap.current.updateZoom()
   }
 
   render() {
@@ -50,6 +53,7 @@ class LocationModal extends Component {
 
           <div className={"map-wrapper"}>
             <GeoMap
+              ref={this.geoMap}
               distance={this.state.distance}
               radius={ 500 * this.state.distance}
             />

@@ -18,6 +18,8 @@ class GeoSearch extends MapControl {
   componentDidMount() {
     const { map } = this.props.leaflet;
     map.addControl(this.leafletElement);
+    this.leafletElement.getContainer().onclick = e => { e.stopPropagation(); };
+
   }
 }
 
