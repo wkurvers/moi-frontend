@@ -51,7 +51,7 @@ class BAGScreen extends Component {
 
   render() {
     return (
-      <div className={"BAGmodal-container"}>
+      <div className={"modal-bag-container"}>
         <div className={"info-text-container"}>
           <div className={"info-text"}>
             BAG is het Bassisregistratie Adressen en Gebouwen, geef aan welke functie de panden van de bedrijven belangrijk zijn

@@ -89,6 +89,8 @@ class TypeScreen extends Component {
           <div className={"info-text"}>
             Geef aan in wat voor type bedrijf het mag zijn
           </div>
+        </div>
+        <div className={"type-dropdown-container"}>
           <Dropdown overlay={this.state.menu}>
             {this.getMenuText()}
           </Dropdown>

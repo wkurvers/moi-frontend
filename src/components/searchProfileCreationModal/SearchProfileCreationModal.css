@@ -16,27 +16,53 @@
     color: white;
 }
 
+.ant-modal-footer {
+    background-color: white;
+}
+
 .nav-buttons-container {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
 }
 
-.nav-button {
-    background: #01A7C2;
-    color: white;
-}
-
 .modal-container {
     height: 200px;
     padding: 24px;
-    margin: 10px;
+    background-color: white;
+}
+
+.modal-location-container {
+    height: 575px;
+    padding: 24px;
+    background-color: white;
+}
+
+.modal-lawform-container {
+    background-color: white;
+    height: 280px;
+    padding: 24px;
+}
+
+.modal-bag-container {
+    background-color: white;
+    height: 280px;
+    padding: 24px;
+}
+
+.steps-container {
+    background-color: white;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 520px;
+    padding-top: 1vh;
 }
 
 .info-text-container {
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
+    padding-top: 10px;
 }
 
 .text-slider-container {
@@ -71,6 +97,11 @@
 
 .type-dropdown-menu {
     cursor: pointer;
+}
+
+.type-dropdown-container {
+    display: flex;
+    justify-content: center;
 }
 
 .number-slider {
@@ -149,7 +180,7 @@
 
 .Thememodal-container {
     height: 375px;
-    
+    background-color: white;
 }
 
 .grid-container {

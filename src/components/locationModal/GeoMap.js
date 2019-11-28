@@ -2,15 +2,21 @@ import React, {Component} from "react";
 import {Circle, Map, Marker, TileLayer} from 'react-leaflet'
 import GeoSearch from "./GeoSearch"
 import {Slider} from "antd";
+import {connect} from 'react-redux';
+import {storeLocation} from "../../actions/profileCreationActions";
 
 class GeoMap extends Component {
   constructor(props) {
     super(props);
+    let startPosition = ["53.2402311", "6.5312574"]
+    if(this.props.position !== undefined) {
+      startPosition = this.props.startPosition
+    }
     this.state = {
-      position: ["53.2402311", "6.5312574"],
+      position: startPosition,
       coords: {
-        latitude: "53.2402311",
-        longitude: "6.5312574",
+        latitude: startPosition[0],
+        longitude: startPosition[1],
       },
       distance: 1,
       zoom: 14,
@@ -51,6 +57,7 @@ class GeoMap extends Component {
   updateLocation = (e) => {
     this.map.current.leafletElement.fitBounds(this.circle.current.leafletElement.getBounds());
     this.setState({position: e.latlng});
+    this.props.storeLocation({position: this.state.position, distance: this.state.distance});
   };
 
   updateDistance = distance => {
@@ -58,6 +65,7 @@ class GeoMap extends Component {
       distance: distance,
       radius: distance * 500
     });
+    this.props.storeLocation({position: this.state.position, distance: this.state.distance});
     this.updateZoom()
   }
 
@@ -104,5 +112,7 @@ class GeoMap extends Component {
   }
 }
 
-
-export default GeoMap;
+const mapStateToProps = state =>  ({
+    storedLocation: state.profile.location
+});
+export default connect(mapStateToProps,{storeLocation})(GeoMap);

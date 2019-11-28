@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Modal, Steps} from 'antd';
+import {Modal, Steps, Popover} from 'antd';
 import "./SearchProfileCreationModal.css"
 import BeginScreen from "./BeginScreen";
 import ThemeScreen from "./ThemeScreen";
@@ -135,11 +135,16 @@ class SearchProfileCreationModal extends Component {
 				onCancel={this.handleCancel}
 			>
 				{this.getActiveComponent()}
-				<Steps current={this.state.activeComponent} size="small" style={{marginLeft: '2px'}}>
-					{steps.map(item => (
-						<Step key={item.title}/>
-					))}
-				</Steps>
+				<div className={"steps-container"}>
+					<Steps 
+					current={this.state.activeComponent}
+					size="small"
+					>
+						{steps.map(item => (
+							<Step key={item.title}/>
+						))}
+					</Steps>
+				</div>
 			</Modal>
 		);
 	}

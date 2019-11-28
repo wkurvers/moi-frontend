@@ -52,7 +52,7 @@ class LawFormScreen extends Component {
 
   render() {
     return (
-      <div className={"modal-container"}>
+      <div className={"modal-lawform-container"}>
         <div className={"info-text-container"}>
           <div className={"info-text"}>
             Geef aan in welke rechtsvorm de bedrijven mogen hebben
