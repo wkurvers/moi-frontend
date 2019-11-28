@@ -1,4 +1,4 @@
-import {FETCH_USERS,NEW_USER} from "./types";
+import {FETCH_USERS} from "./types";
 
 export const fetchUsers = () => dispatch =>  {
     fetch(API_URL + '/api/user/')

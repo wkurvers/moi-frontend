@@ -50,6 +50,8 @@ class Register extends Component {
   handleError(msg) {
     this.setState({
       "emailError": true,
+      "firstPasswordError": true,
+      "secondPasswordError": true,
       "errorMessage": msg
     })
   }
@@ -57,6 +59,8 @@ class Register extends Component {
   resetError() {
     this.setState({
       "emailError": false,
+      "firstPasswordError": false,
+      "secondPasswordError": false,
       "errorMessage": ""
     })
   }
