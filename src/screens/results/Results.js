@@ -208,37 +208,6 @@ class Results extends Component {
     )
   }
 
-
-  _renderHorizontalActions2() {
-    const {Search} = Input;
-
-    return (
-        <div className={"horizontal-actions-container"}>
-
-          <div className={'search-container action-container'}>
-              <Search placeholder="Zoek een bedrijf" onSearch={value => console.log(value)}
-                      enterButton/>
-          </div>
-
-          <Dropdown overlay={sortMenu}>
-            <Button>
-              Sorteren <Icon type="down"/>
-            </Button>
-          </Dropdown>
-
-          <div className={"results-mapview-switch-container"}>
-            <h6>
-              Map view
-            </h6>
-            <Switch className={"results-mapview-switch"} checked={this.state.mapViewActive}
-                    onClick={() => this.toggleResultView()}/>
-          </div>
-
-        </div>
-    )
-  }
-
-
   render() {
     const {Search} = Input;
     const {disabled, numEmployees} = this.state;
@@ -325,7 +294,7 @@ class Results extends Component {
 
                     <Col className={'resultsContainer'}>
                       {!this.state.mapViewActive && this.resultCompany()}
-                      {this.state.mapViewActive && <MapView/>}
+                      {this.state.mapViewActive && <MapView data={this.state.data}/>}
 
                       <Pagination id={'pagination'} defaultCurrent={1} total={500}/>
                     </Col>
