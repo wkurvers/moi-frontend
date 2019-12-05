@@ -1,0 +1,233 @@
+.ant-modal-header {
+    background: #01A7C2 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 80px;
+}
+
+.ant-modal-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.ant-modal-close-x {
+    color: white;
+}
+
+.ant-modal-footer {
+    background-color: white;
+}
+
+.nav-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.modal-container {
+    height: 200px;
+    padding: 24px;
+    background-color: white;
+}
+
+.modal-location-container {
+    height: 575px;
+    padding: 24px;
+    background-color: white;
+}
+
+.modal-lawform-container {
+    background-color: white;
+    height: 280px;
+    padding: 24px;
+}
+
+.modal-bag-container {
+    background-color: white;
+    height: 280px;
+    padding: 24px;
+}
+
+.steps-container {
+    background-color: white;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 520px;
+    padding-top: 1vh;
+}
+
+.info-text-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.text-slider-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    height: 150px;
+    justify-content: space-between;
+}
+
+.info-text {
+    font-size: 18px;
+    color: black;
+    margin-bottom: 10px;
+    display: flex;
+    align-self: center;
+}
+
+.info-sub-text {
+    font-size: 14px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.theme-select-container {
+    height: 150px;
+}
+
+.activity-select-container {
+    height: 150px;
+}
+
+.type-dropdown-menu {
+    cursor: pointer;
+}
+
+.type-dropdown-container {
+    display: flex;
+    justify-content: center;
+}
+
+.number-slider {
+    margin-top: 50px;
+}
+
+.item-container {
+    height: 75px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    border: 2px solid #00697a;
+    font-size: 20px;
+    color: #595959;
+    box-shadow: 2.5px 2.5px gray;
+    /*Color fade in*/
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+}
+
+.item-container:hover {
+    background: #73d13d;
+    cursor: pointer;
+    border: 2px solid #00697a;
+    box-shadow: 0px 0px;
+    color: #595959;    
+}
+
+.item-container-active {
+    background: #73d13d;
+    color: #595959;
+    height: 75px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    border: 2px solid #00697a;
+    font-size: 20px;
+    color: #595959;
+    box-shadow: 0px 0px;
+    /*Color fade in*/
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+}
+
+.item-container-active:hover {
+    background: white;
+    cursor: pointer;
+    border: 2px solid #00697a;
+    box-shadow: 0px 0px;
+    color: #595959;    
+}
+
+.small-item-container {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    border: 2px solid #00697a;
+    font-size: 20px;
+    color: #595959;
+    box-shadow: 2.5px 2.5px gray;
+    /*Color fade in*/
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+}
+
+.BAGmodal {
+    height: 350px;
+}
+
+.Thememodal-container {
+    height: 375px;
+    background-color: white;
+}
+
+.grid-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.finished-button: {
+    display: flex;
+    align-self: flex-end;
+}
+
+.logo-theme {
+    height: 80px;
+    width: 80px;
+    /*Color fade in*/
+    -moz-transition: all .5s ease-in;
+    -o-transition: all .5s ease-in;
+    -webkit-transition: all .5s ease-in;
+    transition: all .5s ease-in;
+}
+
+.logo-theme:hover {
+    cursor: pointer;
+}
+
+.logo-theme-active:hover {
+    cursor: pointer;
+}
+
+.logo-theme-active-icon {
+    position: absolute;
+    top: 25%;
+    right: 30%;
+    font-size: 50px;
+    color: #237804
+}
+
+.logo-theme-active {
+    height: 80px;
+    width: 80px;
+    opacity: 0.25;
+    /*Color fade in*/
+    -moz-transition: all .5s ease-in;
+    -o-transition: all .5s ease-in;
+    -webkit-transition: all .5s ease-in;
+    transition: all .5s ease-in;
+}

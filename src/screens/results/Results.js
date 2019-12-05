@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Breakpoint, BreakpointProvider} from 'react-socks';
 import ScrollMenuHorizontal from '../../components/scrollMenu/ScrollMenuHorizontal';
 import topImage from '../../assets/vector-abstract-modern-polygonal-geometric-background.jpg';
-import {Icon, Modal, Input, Slider, InputNumber, Pagination, Tag, Menu, Dropdown, Button, Switch} from 'antd';
+import {Icon, Modal, Input, Slider, InputNumber, Pagination, Tag, Menu, Dropdown, Button, Switch, AutoComplete} from 'antd';
 import './Results.css';
 import {Container, Row, Col} from 'react-bootstrap';
 import themes from '../../utils/themes'
@@ -167,19 +167,30 @@ class Results extends Component {
             <h6>
               Map view
             </h6>
-            <Switch className={"results-mapview-switch"} checked={this.state.mapViewActive} onClick={() => this.toggleResultView()}/>
+            <Switch className={"results-mapview-switch"} checked={this.state.mapViewActive}
+                    onClick={() => this.toggleResultView()}/>
           </div>
 
         </div>
     )
   }
 
+  getThemes(company) {
+    const themesKeys = Object.keys(company['Thema\'s']).map(key =>
+        <Tag style={{
+          color: "white",
+          backgroundColor: themes[key.slice(9)].colorOne
+        }}>{company['Thema\'s'][key]}</Tag>
+    );
+    return themesKeys
+  }
+
 
   render() {
-
     const {disabled, numEmployees} = this.state;
 
     const companyItems = this.state.data.results;
+    const {Search} = Input;
 
     return (
         <BreakpointProvider>
@@ -209,16 +220,19 @@ class Results extends Component {
           <Breakpoint medium up>
             <div>
               <div className={'topImageContainer'}>
-                {/*<h1 id={'numberOfResults'}>700 Resultaten</h1>*/}
+                <h1 id={'numberOfResults'}>{this.state.data.records_total} resultaten</h1>
                 <img id={'topImage'} src={topImage}/>
               </div>
 
               <div className={'categoriesContainer'}>
                 <ScrollMenuHorizontal/>
               </div>
-
-              {this._renderHorizontalActions()}
-
+              <div className={'searchContainer'}>
+                <div className={'search'}>
+                  <Search placeholder="Zoek een bedrijf" onSearch={value => console.log(value)}
+                          enterButton/>
+                </div>
+              </div>
 
               <div>
                 <Container fluid={true}>
@@ -228,7 +242,7 @@ class Results extends Component {
                       <Slider range defaultValue={[20, 50]} disabled={disabled}/>
 
                       <h6 className={'filtersBottom'}>Regio</h6>
-                      <Input placeholder="Vul uw regio in"/>
+                      <AutoComplete placeholder="Vul uw regio in"/>
 
                       <h6 className={'filtersBottom'}>Aantal werknemers</h6>
 
@@ -257,10 +271,9 @@ class Results extends Component {
                     </Col>
 
                     <Col className={'resultsContainer'}>
-                        {this.state.mapViewActive && <MapView ref={this.mapView} data={data} />}
-                        {!this.state.mapViewActive && this.resultCompany()}
+                      {this.resultCompany()}
 
-                      <Pagination id={'pagination'} defaultCurrent={6} total={500}/>
+                      <Pagination id={'pagination'} defaultCurrent={1} total={500}/>
                     </Col>
                   </Row>
                 </Container>
