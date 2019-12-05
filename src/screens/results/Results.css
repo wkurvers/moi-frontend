@@ -59,6 +59,16 @@
 
 /* ######### ant d search #########*/
 
+.horizontal-actions-container {
+
+    padding-right: 10%;
+    padding-left: 10%;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
+
 .searchContainer {
     height: 7em;
     line-height: 5em;
@@ -71,7 +81,7 @@
 .search {
     height: 5vh;
     width: 27vw;
-    margin-left: -10.3vw;
+    margin-left: 10.3vw;
     margin-top: 2vh;
 }
 
@@ -79,6 +89,17 @@
     background-color: #f49b3f;
     border-color: #f49b3f;
 }
+
+.results-mapview-switch-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.results-mapview-switch {
+    margin-left: 10px;
+}
+
+.results-mapview
 
 /* ######### menu (footer) for mobile #########*/
 
