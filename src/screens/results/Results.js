@@ -296,7 +296,12 @@ class Results extends Component {
         const themesKeys = Object.keys(company['Thema\'s']).map(key =>
             <Tag style={{
                 color: "white",
-                backgroundColor: themes[key.slice(9)].colorOne
+                background:
+                    "linear-gradient(135deg, " +
+                    themes[key.slice(9)].colorOne +
+                    " 0%, " +
+                    themes[key.slice(9)].colorTwo +
+                    " 100%)",
             }}>{company['Thema\'s'][key]}</Tag>
         );
         return themesKeys
