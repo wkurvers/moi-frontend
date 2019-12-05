@@ -2,7 +2,20 @@ import React, {Component} from 'react';
 import {Breakpoint, BreakpointProvider} from 'react-socks';
 import ScrollMenuHorizontal from '../../components/scrollMenu/ScrollMenuHorizontal';
 import topImage from '../../assets/vector-abstract-modern-polygonal-geometric-background.jpg';
-import {Icon, Modal, Input, Slider, InputNumber, Pagination, Tag, Menu, Dropdown, Button, Switch, AutoComplete} from 'antd';
+import {
+  Icon,
+  Modal,
+  Input,
+  Slider,
+  InputNumber,
+  Pagination,
+  Tag,
+  Menu,
+  Dropdown,
+  Button,
+  Switch,
+  AutoComplete
+} from 'antd';
 import './Results.css';
 import {Container, Row, Col} from 'react-bootstrap';
 import themes from '../../utils/themes'
@@ -94,6 +107,7 @@ class Results extends Component {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
 
+
   scrollFunction() {
     let mybutton = document.getElementById("myBtn");
     if (document.body.scrollTop > 350 || document.documentElement.scrollTop > 350) {
@@ -105,29 +119,45 @@ class Results extends Component {
 
   getThemes(company) {
     const themesKeys = Object.keys(company['Thema\'s']).map(key =>
-        <Tag style={{color: "white", backgroundColor: themes[key.slice(9)].colorOne}}>{company['Thema\'s'][key]}</Tag>
+        <Tag style={{
+          color: "white",
+          background:
+              "linear-gradient(135deg, " +
+              themes[key.slice(9)].colorOne +
+              " 0%, " +
+              themes[key.slice(9)].colorTwo +
+              " 100%)",
+        }}>{company['Thema\'s'][key]}</Tag>
     );
     return themesKeys
   }
+
 
   resultCompany() {
     const companyItems = this.state.data.results.map(company => (
 
         <div>
           <Row className={'companyContainer'} noGutters={true}>
-            <Col xs={12} md={8} lg={6}>
-              <div id={'leftside'} key={company.ID}>
-                <h5 id={'companyName'}>{company.Bedrijfsnaam}</h5>
-                <a href={company.Websites}>{company.Websites}</a>
+            <Col xs={12} md={6} lg={6}>
+              <div style={{display: 'flex', flexDirection: 'row'}}>
+                <div id={'companyTitleContainer'} key={company.ID}>
+                  <h5 id={'companyName'}>{company.Bedrijfsnaam}</h5>
+                  <a href={company.Websites}>{company.Websites}</a>
+                </div>
+              </div>
+
+            </Col>
+            <Col xs={6} md={4}>
+              <div id={'companyThemesContainer'}>
                 <div id={'companyThemes'}>
                   {this.getThemes(company)}
                 </div>
-
               </div>
             </Col>
-            <Col xs={6} md={4}>
+
+            <Col xs={6} md={2}>
               <div id={'rightside'}>
-                <h6 id={'companyName'}>{company.Plaats}</h6>
+                <h6>{company.Plaats}</h6>
                 <h7>{company.Provincie}</h7>
               </div>
             </Col>
@@ -175,22 +205,12 @@ class Results extends Component {
     )
   }
 
-  getThemes(company) {
-    const themesKeys = Object.keys(company['Thema\'s']).map(key =>
-        <Tag style={{
-          color: "white",
-          backgroundColor: themes[key.slice(9)].colorOne
-        }}>{company['Thema\'s'][key]}</Tag>
-    );
-    return themesKeys
-  }
-
 
   render() {
+    const {Search} = Input;
     const {disabled, numEmployees} = this.state;
 
     const companyItems = this.state.data.results;
-    const {Search} = Input;
 
     return (
         <BreakpointProvider>
@@ -283,6 +303,7 @@ class Results extends Component {
           </Breakpoint>
 
         </BreakpointProvider>
+
     );
   }
 }
