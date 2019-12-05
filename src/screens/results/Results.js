@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Breakpoint, BreakpointProvider} from 'react-socks';
 import ScrollMenuHorizontal from '../../components/scrollMenu/ScrollMenuHorizontal';
 import topImage from '../../assets/vector-abstract-modern-polygonal-geometric-background.jpg';
-import {Icon, Modal, Input, Slider, InputNumber, Pagination, Tag} from 'antd';
+import {Icon, Modal, Input, Slider, InputNumber, Pagination, Tag, AutoComplete} from 'antd';
 import './Results.css';
 import {Container, Row, Col} from 'react-bootstrap';
 import themes from '../../utils/themes'
@@ -294,7 +294,10 @@ class Results extends Component {
 
     getThemes(company) {
         const themesKeys = Object.keys(company['Thema\'s']).map(key =>
-            <Tag style={{color: "white", backgroundColor: themes[key.slice(9)].colorOne }} >{company['Thema\'s'][key]}</Tag>
+            <Tag style={{
+                color: "white",
+                backgroundColor: themes[key.slice(9)].colorOne
+            }}>{company['Thema\'s'][key]}</Tag>
         );
         return themesKeys
     }
@@ -305,19 +308,26 @@ class Results extends Component {
 
             <div>
                 <Row className={'companyContainer'} noGutters={true}>
-                    <Col xs={12} md={8} lg={6} >
-                        <div id={'leftside'} key={company.ID}>
-                            <h5 id={'companyName'}>{company.Bedrijfsnaam}</h5>
-                            <a href={company.Websites}>{company.Websites}</a>
+                    <Col xs={12} md={6} lg={6}>
+                        <div style={{display: 'flex', flexDirection: 'row'}}>
+                            <div id={'companyTitleContainer'} key={company.ID}>
+                                <h5 id={'companyName'}>{company.Bedrijfsnaam}</h5>
+                                <a href={company.Websites}>{company.Websites}</a>
+                            </div>
+                        </div>
+
+                    </Col>
+                    <Col xs={6} md={4}>
+                        <div id={'companyThemesContainer'}>
                             <div id={'companyThemes'}>
                                 {this.getThemes(company)}
                             </div>
-
                         </div>
                     </Col>
-                    <Col xs={6} md={4}  >
+
+                    <Col xs={6} md={2}>
                         <div id={'rightside'}>
-                            <h6 id={'companyName'}>{company.Plaats}</h6>
+                            <h6>{company.Plaats}</h6>
                             <h7>{company.Provincie}</h7>
                         </div>
                     </Col>
@@ -364,7 +374,7 @@ class Results extends Component {
                 <Breakpoint medium up>
                     <div>
                         <div className={'topImageContainer'}>
-                            {/*<h1 id={'numberOfResults'}>700 Resultaten</h1>*/}
+                            <h1 id={'numberOfResults'}>{this.state.data.records_total} resultaten</h1>
                             <img id={'topImage'} src={topImage}/>
                         </div>
 
@@ -386,7 +396,7 @@ class Results extends Component {
                                         <Slider range defaultValue={[20, 50]} disabled={disabled}/>
 
                                         <h6 className={'filtersBottom'}>Regio</h6>
-                                        <Input placeholder="Vul uw regio in"/>
+                                        <AutoComplete placeholder="Vul uw regio in"/>
 
                                         <h6 className={'filtersBottom'}>Aantal werknemers</h6>
 
@@ -417,7 +427,7 @@ class Results extends Component {
                                     <Col className={'resultsContainer'}>
                                         {this.resultCompany()}
 
-                                        <Pagination id={'pagination'} defaultCurrent={6} total={500}/>
+                                        <Pagination id={'pagination'} defaultCurrent={1} total={500}/>
                                     </Col>
                                 </Row>
                             </Container>
