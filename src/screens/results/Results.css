@@ -73,20 +73,14 @@
     display: flex;
 }
 
-.searchContainer {
-    height: 7em;
-    line-height: 5em;
-    text-align: center;
+.search-container {
+    padding: 30px !important;
+}
+
+.action-container {
     align-items: center;
     justify-content: center;
     display: flex;
-}
-
-.search {
-    height: 5vh;
-    width: 27vw;
-    margin-left: 10.3vw;
-    margin-top: 2vh;
 }
 
 .ant-btn-primary {
@@ -103,7 +97,9 @@
     margin-left: 10px;
 }
 
-.results-mapview
+.results-mapview {
+
+}
 
 /* ######### menu (footer) for mobile #########*/
 
@@ -326,4 +322,3 @@
 .ant-slider-track ant-slider-track-1:hover {
     background-color: rgb(1, 167, 194);
 }
-

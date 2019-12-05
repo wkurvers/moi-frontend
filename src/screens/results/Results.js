@@ -178,13 +178,46 @@ class Results extends Component {
     const {Search} = Input;
 
     return (
-        <div className={"horizontal-actions-container"}>
+        <Container fluid={true}>
+          <Row>
+            <Col md={3}>
 
-          <div className={'searchContainer'}>
-            <div className={'search'}>
+            </Col>
+            <Col className={"search-container action-container"} md={5}>
               <Search placeholder="Zoek een bedrijf" onSearch={value => console.log(value)}
                       enterButton/>
-            </div>
+            </Col>
+            <Col className={"action-container"} md={2}>
+              <Row>
+                <Dropdown overlay={sortMenu}>
+                  <Button>
+                    Sorteren <Icon type="down"/>
+                  </Button>
+                </Dropdown>
+              </Row>
+            </Col>
+            <Col className={"action-container"} md={2}>
+              <h6>
+                Map view
+              </h6>
+              <Switch className={"results-mapview-switch"} checked={this.state.mapViewActive}
+                      onClick={() => this.toggleResultView()}/>
+            </Col>
+          </Row>
+        </Container>
+    )
+  }
+
+
+  _renderHorizontalActions2() {
+    const {Search} = Input;
+
+    return (
+        <div className={"horizontal-actions-container"}>
+
+          <div className={'search-container action-container'}>
+              <Search placeholder="Zoek een bedrijf" onSearch={value => console.log(value)}
+                      enterButton/>
           </div>
 
           <Dropdown overlay={sortMenu}>
@@ -247,13 +280,13 @@ class Results extends Component {
               <div className={'categoriesContainer'}>
                 <ScrollMenuHorizontal/>
               </div>
-              <div className={'searchContainer'}>
-                <div className={'search'}>
-                  <Search placeholder="Zoek een bedrijf" onSearch={value => console.log(value)}
-                          enterButton/>
-                </div>
-              </div>
-
+              {/*<div className={'searchContainer'}>*/}
+              {/*  <div className={'search'}>*/}
+              {/*    <Search placeholder="Zoek een bedrijf" onSearch={value => console.log(value)}*/}
+              {/*            enterButton/>*/}
+              {/*  </div>*/}
+              {/*</div>*/}
+              {this._renderHorizontalActions()}
               <div>
                 <Container fluid={true}>
                   <Row>
@@ -291,7 +324,8 @@ class Results extends Component {
                     </Col>
 
                     <Col className={'resultsContainer'}>
-                      {this.resultCompany()}
+                      {!this.state.mapViewActive && this.resultCompany()}
+                      {this.state.mapViewActive && <MapView/>}
 
                       <Pagination id={'pagination'} defaultCurrent={1} total={500}/>
                     </Col>
