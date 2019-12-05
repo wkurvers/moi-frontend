@@ -63,25 +63,42 @@
 
 /* ######### ant d search #########*/
 
-.searchContainer {
-    height: 7em;
-    line-height: 5em;
-    text-align: center;
+.horizontal-actions-container {
+
+    padding-right: 10%;
+    padding-left: 10%;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+.search-container {
+    padding: 30px !important;
+}
+
+.action-container {
     align-items: center;
     justify-content: center;
     display: flex;
 }
 
-.search {
-    height: 5vh;
-    width: 27vw;
-    margin-left: -10.3vw;
-    margin-top: 2vh;
-}
-
 .ant-btn-primary {
     background-color: #f49b3f;
     border-color: #f49b3f;
+}
+
+.results-mapview-switch-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.results-mapview-switch {
+    margin-left: 10px;
+}
+
+.results-mapview {
+
 }
 
 /* ######### menu (footer) for mobile #########*/
@@ -305,4 +322,3 @@
 .ant-slider-track ant-slider-track-1:hover {
     background-color: rgb(1, 167, 194);
 }
-
